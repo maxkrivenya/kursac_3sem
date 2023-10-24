@@ -1,6 +1,5 @@
 #include "q.h"
 #include "stroki.h"
-#include "test.h"
 #include <fstream>
 #define n 20
 using namespace std;
