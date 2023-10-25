@@ -11,7 +11,7 @@ class User {
 	};
 public:
 	User(str& name) {
-		//std::cout << std::endl << "Const User..." << std::endl;
+		//std::cout << std::endl << "Const User..." << std::endl 
 		this->name = name;
 		this->type.ei = 0;
 		this->type.sn = 0;
@@ -22,36 +22,7 @@ public:
 	~User() {
 		//std::cout << std::endl << "Destr User" << std::endl;
 	}
-	friend ostream& operator<<(ostream& o, const User& user) {
-		o << std::endl << "MBTI: ";
-		//<< user.type.ei << ' ' << user.type.sn << ' ' << user.type.tf << ' ' << user.type.jp << std::endl;
-		if (user.type.ei >= 0) {
-			o << 'E';
-		}
-		else {
-			o << 'I';
-		}
-		if (user.type.sn>=0) {
-			o << 'S';
-		}
-		else {
-			o << 'N';
-		}
-		if (user.type.tf >= 0) {
-			o << 'T';
-		}
-		else {
-			o << 'F';
-		}
-		if (user.type.jp >= 0) {
-			o << 'J';
-		}
-		else {
-			o << 'P';
-		}
-
-		return o;
-	}
+	friend ostream& operator<<(ostream& o, const User& user);
 private:
 	str name;
 	struct mbti type;
