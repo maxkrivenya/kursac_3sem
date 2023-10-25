@@ -1,24 +1,27 @@
 #include "q.h"
 #include "stroki.h"
+#include "user.h"
 #include <fstream>
-#define n 20
+#define n 80
 using namespace std;
 int main() {
+	str m{ 3, "Max" };
+	User max { m };
 	ifstream fptr("data.txt");
 	Q<str> shit;
 	int flg = 0;
+	char* x = new char[n];
+	char* y = new char[10];
+	fptr.getline(y, 5);
 	do {
-		//cout << endl << "Input next node " << setw(5);
-		//cin >> poo;
-		char* x = new char[n];
-		//fptr >> x;
+		fptr.getline(y, 5);
 		fptr.getline(x, n);
-		str poo{ n, x };
+		str poo{ static_cast<int>(strlen(x)), x};
 		if (poo[0] == '0');
-		shit.push(poo);
+		shit.push(poo, atoi(y));
 	} while (!fptr.eof());
-	//shit.show();
-	shit.test();
+	shit.test(max);
 	fptr.close();
+	delete[] x;
 	return 0;
 }				

@@ -129,10 +129,12 @@
   <ItemGroup>
     <ClCompile Include="kursac_3sem.cpp" />
     <ClCompile Include="stroki.cpp" />
+    <ClCompile Include="user.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="q.h" />
     <ClInclude Include="stroki.h" />
+    <ClInclude Include="user.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="data.txt" />
