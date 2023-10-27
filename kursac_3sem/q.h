@@ -2,6 +2,7 @@
 #include <iostream>
 #include <iomanip>
 #include "user.h"
+#include "Question.h"
 //using namespace std;
 
 template <class T> class Q  {

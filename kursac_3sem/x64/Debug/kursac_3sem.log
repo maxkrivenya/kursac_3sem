@@ -1,5 +1,5 @@
 ﻿  kursac_3sem.cpp
 D:\github\kursac_3sem\kursac_3sem\kursac_3sem\kursac_3sem.cpp(20,21): warning C4390: ';': empty controlled statement found; is this the intent?
-  user.cpp
+  Question.cpp
   Generating Code...
   kursac_3sem.vcxproj -> D:\github\kursac_3sem\kursac_3sem\kursac_3sem\x64\Debug\kursac_3sem.exe
