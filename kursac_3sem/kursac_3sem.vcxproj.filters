@@ -27,6 +27,9 @@
     <ClCompile Include="Question.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="q.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="q.h">

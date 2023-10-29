@@ -2,7 +2,10 @@
 #include <iostream>
 #include <iomanip>
 #include "stroki.h"
+#include "Question.h"
 class User {
+	friend q_mbti;
+	friend Test;
 	struct mbti {
 		int ei;
 		int sn;
@@ -26,10 +29,6 @@ public:
 private:
 	str name;
 	struct mbti type;
-//protected:
-public:
-	void upd_ei(int);
-	void upd_sn(int);
-	void upd_tf(int);
-	void upd_jp(int);
+protected:
+	void upd_mbti(int, q_mbti q);
 };

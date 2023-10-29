@@ -7,19 +7,15 @@ public:
 		this->data = data;
 	}
 	~Question() {};
-	void sout() {
-		std::cout << std::endl << this->data << std::endl;
-	}
-	friend ostream& operator<<(ostream& os, Question& q) {
-		os << '\n' << q.data << '\n';
-		return os;
-	}
+	void sout();
+	friend ostream& operator<<(ostream& os, Question& q);
 protected:
 	str data;
 };
 
 
 class q_mbti : public Question {
+	friend class User;
 	int type;
 public:
 	q_mbti(int type = 0, str data = {1, "\n"}) :Question(data) {

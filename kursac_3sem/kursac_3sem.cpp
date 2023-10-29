@@ -9,7 +9,7 @@ int main() {
 	str m{ 3, "Max" };
 	User max { m };
 	ifstream fptr("data.txt");
-	Q<q_mbti> shit;
+	Test shit;
 	int flg = 0;
 	char* x = new char[n];
 	char* y = new char[10];
