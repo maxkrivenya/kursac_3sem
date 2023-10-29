@@ -7,7 +7,7 @@ char str::operator[](int n) {
 	}
 	return '\0';
 }
-str str::operator+ (const str& s) {						//???????? ? ????????
+str str::operator+ (const str& s) {						  
 	str st{ this->len + s.len };
 	int i = 0;
 	for (int j = 0; j < len - 1; j++, i++) {
@@ -19,45 +19,45 @@ str str::operator+ (const str& s) {						//???????? ? ????????
 	return st;
 }
 
-void str::operator=(const str& n) {						//????????????
+void str::operator=(const str& n) {						
 	this->len = n.len;
 	this->string = new char[this->len];
 	strcpy_s(this->string, this->len, n.string);
 }
 
-str str::operator*= (const char* abc) {					//???????? ? ????? ???????
+str str::operator*= (const char* abc) {					   
 	int len = strlen(abc);
 	str temp{ len + 1, abc };
 	cout << temp;
 	return ((*this) + temp);
 }
 
-ostream& operator<<(ostream& os, str& obj) {				//????? 
+ostream& operator<<(ostream& os, str& obj) {				 
 	os << //'[' << obj.len << "]\t"  << 
 		obj.string << endl;
 	return os;
 }
 
-istream& operator>>(istream& is, str& obj) {			//????
+istream& operator>>(istream& is, str& obj) {			
 	is >> obj.len;
 	obj.string = new char[obj.len];
 	is >> obj.string;
 	return is;
 }
 
-void str::operator++() {								//?????????
+void str::operator++() {								
 	for (int i = 0; i < this->len && this->string[i] != '\0'; i++) {
 		this->string[i]++;
 	}
 }
 
-void str::operator--() {									//?????????
+void str::operator--() {									
 	for (int i = 0; i < this->len - 2 && this->string[i] != '\0'; i++) {
 		this->string[i]--;
 	}
 }
 
-str str::operator()(int a, int b) {						//????????? ?????????
+str str::operator()(int a, int b) {						 
 	if (a >= b) { return NULL; }
 	if (a < 0 || b > this->len) { cout << "Wrong input" << endl; return NULL; }
 	str s{ b - a + 1 };
@@ -69,19 +69,10 @@ str str::operator()(int a, int b) {						//????????? ?????????
 	return s;
 }
 
-int str::operator>(str cmp) {							//?????????
-	//return (strcmp(this->string, cmp.string));
+int str::operator>(str cmp) {							
 	return this->len > cmp.len;
 }
 
-int str::operator<(str cmp) {							//?????????
-	//return (!strcmp(this->string, cmp.string));
+int str::operator<(str cmp) {							
 	return this->len <= cmp.len;
 }
-
-//str std::operator+(const char* st, const str& a) {
-//	int len = strlen(st);
-//	str temp{ len + 1, st };
-//	cout << temp;
-//	return (temp.operator+(a));
-//}
