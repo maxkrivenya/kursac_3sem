@@ -79,7 +79,8 @@ void Test::test(User user) {
 		<< std::endl << "The rules are simple:"
 		<< std::endl << "\tYou will be shown a statement."
 		<< std::endl << "\tPlease input a number from -3 to 3 as your answer depending on how much you agree with the statement."
-		<< std::endl << "To start the Test, input any number." << std::endl;
+		<< std::endl << "To start the Test, input any number." << std::endl << std::endl << //"//Input number" << std::endl;
+		"Your answer:  ";;
 	cin >> result;
 	result = 0;
 	node* temp = this->root;
@@ -88,7 +89,8 @@ void Test::test(User user) {
 		system("CLS");
 		//std::cout << temp->data;
 		temp->data.sout();
-		std::cout << std::endl << "//Input number" << std::endl;
+		std::cout << std::endl << //"//Input number" << std::endl;
+			"Your answer:  ";
 		std::cin >> choice;
 		user.upd_mbti(choice, temp->data);
 		//this->choice(user, choice);
@@ -102,5 +104,6 @@ void Test::test(User user) {
 		//default:{std::cout << std::endl << "Wrong input." << std::endl; }
 		//}
 	}
+	system("CLS");
 	std::cout << std::endl << "Your result is: " << user << std::endl;
 }

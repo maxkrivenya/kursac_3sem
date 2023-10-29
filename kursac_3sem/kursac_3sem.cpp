@@ -9,7 +9,7 @@ int main() {
 	str m{ 3, "Max" };
 	User max { m };
 	ifstream fptr("data.txt");
-	Test shit;
+	Test test;
 	int flg = 0;
 	char* x = new char[n];
 	char* y = new char[10];
@@ -17,12 +17,12 @@ int main() {
 	do {
 		fptr.getline(y, 5);
 		fptr.getline(x, n);
-		str poo{ static_cast<int>(strlen(x)), x};
-		if (poo[0] != '\0') {
-			shit.push(q_mbti(atoi(y), poo));
+		str temp{ static_cast<int>(strlen(x)), x};
+		if (temp[0] != '\0') {
+			test.push(q_mbti(atoi(y), temp));
 		}
 	} while (!fptr.eof());
-	shit.test(max);
+	test.test(max);
 	fptr.close();
 	delete[] x;
 	return 0;

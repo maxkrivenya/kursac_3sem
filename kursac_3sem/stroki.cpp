@@ -33,7 +33,8 @@ str str::operator*= (const char* abc) {					//???????? ? ????? ???????
 }
 
 ostream& operator<<(ostream& os, str& obj) {				//????? 
-	os << '[' << obj.len << "]\t"  << obj.string << endl;
+	os << //'[' << obj.len << "]\t"  << 
+		obj.string << endl;
 	return os;
 }
 
