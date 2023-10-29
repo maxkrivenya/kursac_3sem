@@ -136,6 +136,7 @@
   <ItemGroup>
     <ClInclude Include="q.h" />
     <ClInclude Include="Question.h" />
+    <ClInclude Include="stack.h" />
     <ClInclude Include="stroki.h" />
     <ClInclude Include="user.h" />
   </ItemGroup>

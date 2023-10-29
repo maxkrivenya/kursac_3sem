@@ -2,6 +2,7 @@
 #include "stroki.h"
 #include "user.h"
 #include "Question.h"
+#include "stack.h"
 #include <fstream>
 #define n 80
 using namespace std;
@@ -25,5 +26,10 @@ int main() {
 	test.test(max);
 	fptr.close();
 	delete[] x;
+	//stack<int> shit;
+	//for (int i = 0; i < 10; i++) {
+	//	shit.push(i);
+	//}
+	//shit.show();
 	return 0;
 }				
