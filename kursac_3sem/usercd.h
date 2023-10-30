@@ -3,8 +3,11 @@
 #include <iomanip>
 #include "stroki.h"
 #include "Question.h"
+#include "testcd.h"
+#define ket_size 19
 class User {
-	friend q_mbti;
+	//friend q_kettel;
+	//friend q_mbti;
 	friend Test;
 	struct mbti {
 		int ei;
@@ -29,6 +32,8 @@ public:
 private:
 	str name;
 	struct mbti type;
+	int ket[19];
 protected:
 	void upd_mbti(int, q_mbti q);
+	void upd_kettel(int, q_kettel q);
 };

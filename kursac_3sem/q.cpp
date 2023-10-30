@@ -1,4 +1,4 @@
-#include "q.h"
+#include "testcd.h"
 
 Test::Test() {
 	this->root = NULL;

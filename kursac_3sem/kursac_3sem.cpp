@@ -1,6 +1,6 @@
-#include "q.h"
+#include "testcd.h"
 #include "stroki.h"
-#include "user.h"
+#include "usercd.h"
 #include "Question.h"
 #include "stack.h"
 #include <fstream>

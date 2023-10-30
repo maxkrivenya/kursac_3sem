@@ -17,6 +17,7 @@ protected:
 
 class q_mbti : public Question {
 	friend class User;
+protected:
 	int type;
 public:
 	q_mbti(int type = 0, str data = {1, "\n"}) :Question(data) {
@@ -27,8 +28,7 @@ public:
 };
 
 class q_kettel : public q_mbti {
-	friend class User;
-	int type;
+	//friend class User;
 	int value_multiplier_male;
 	int value_multiplier_female;
 public:

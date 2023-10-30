@@ -134,19 +134,17 @@
     <ClCompile Include="user.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="q.h" />
     <ClInclude Include="Question.h" />
     <ClInclude Include="stack.h" />
     <ClInclude Include="stroki.h" />
     <ClInclude Include="testcd.h" />
-    <ClInclude Include="user.h" />
     <ClInclude Include="usercd.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="data.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="shit.cd" />
+    <None Include="cd.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
