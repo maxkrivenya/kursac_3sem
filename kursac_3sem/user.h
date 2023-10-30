@@ -2,6 +2,7 @@
 #include <iostream>
 #include <iomanip>
 #include "stroki.h"
+#include "q.h"
 #include "Question.h"
 class User {
 	friend q_mbti;

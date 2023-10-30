@@ -138,7 +138,9 @@
     <ClInclude Include="Question.h" />
     <ClInclude Include="stack.h" />
     <ClInclude Include="stroki.h" />
+    <ClInclude Include="testcd.h" />
     <ClInclude Include="user.h" />
+    <ClInclude Include="usercd.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="data.txt" />

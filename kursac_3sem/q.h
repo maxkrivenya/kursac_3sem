@@ -19,10 +19,10 @@ class Test{
 	void push(  node**,q_mbti val);
 	void node_add(  node**, q_mbti val, node** = nullptr);
 	void show(  node*);
+	void Test_delete();
 public:
 	Test();
 	~Test();
-	void Test_delete();
 	void push(q_mbti val );
 	void show();
 	void test(User);

@@ -11,6 +11,7 @@ public:
 	friend ostream& operator<<(ostream& os, Question& q);
 protected:
 	str data;
+	int answer;
 };
 
 
@@ -23,4 +24,16 @@ public:
 		this->type = type;
 	}
 	~q_mbti() {};
+};
+
+class q_kettel : public q_mbti {
+	friend class User;
+	int type;
+	int value_multiplier_male;
+	int value_multiplier_female;
+public:
+	q_kettel(int type = 0, str data = { 1, "\n" }) :q_mbti(type, data) {
+
+	}
+	~q_kettel() {};
 };

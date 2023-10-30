@@ -47,6 +47,12 @@
     <ClInclude Include="stack.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="usercd.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="testcd.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="data.txt" />

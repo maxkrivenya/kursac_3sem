@@ -13,7 +13,7 @@ int main() {
 	Test test;
 	int flg = 0;
 	char* x = new char[n];
-	char* y = new char[10];
+	char* y = new char[6];
 	fptr.getline(y, 5);
 	do {
 		fptr.getline(y, 5);
@@ -26,10 +26,6 @@ int main() {
 	test.test(max);
 	fptr.close();
 	delete[] x;
-	//stack<int> shit;
-	//for (int i = 0; i < 10; i++) {
-	//	shit.push(i);
-	//}
-	//shit.show();
+
 	return 0;
 }				
