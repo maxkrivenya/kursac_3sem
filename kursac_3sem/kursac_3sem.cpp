@@ -9,7 +9,7 @@
 using namespace std;
 int main() {
 	str m{ 3, "Max" };
-	User max { m };
+	User max{ m };
 	ifstream fptr("data.txt");
 	Test test;
 	int flg = 0;
@@ -19,7 +19,7 @@ int main() {
 	do {
 		fptr.getline(y, 5);
 		fptr.getline(x, n);
-		str temp{ static_cast<int>(strlen(x)), x};
+		str temp{ static_cast<int>(strlen(x)), x };
 		if (temp[0] != '\0') {
 			test.push(q_mbti(atoi(y), temp));
 		}
@@ -29,4 +29,4 @@ int main() {
 	delete[] x;
 
 	return 0;
-}				
+}
