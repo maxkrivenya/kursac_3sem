@@ -1,4 +1,4 @@
-#include "Question.h"
+#include "question.h"
 using namespace std;
 void Question::sout() {
 	cout << endl << this->data << endl;

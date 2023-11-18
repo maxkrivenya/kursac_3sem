@@ -128,20 +128,22 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="kursac_3sem.cpp" />
-    <ClCompile Include="q.cpp" />
-    <ClCompile Include="Question.cpp" />
+    <ClCompile Include="test.cpp" />
+    <ClCompile Include="question.cpp" />
     <ClCompile Include="stroki.cpp" />
     <ClCompile Include="user.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Question.h" />
+    <ClInclude Include="q.h" />
+    <ClInclude Include="question.h" />
     <ClInclude Include="stack.h" />
     <ClInclude Include="stroki.h" />
-    <ClInclude Include="testcd.h" />
-    <ClInclude Include="usercd.h" />
+    <ClInclude Include="test.h" />
+    <ClInclude Include="user.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="data.txt" />
+    <Text Include="users.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="cd.cd" />

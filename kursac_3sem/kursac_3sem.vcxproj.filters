@@ -24,10 +24,10 @@
     <ClCompile Include="user.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Question.cpp">
+    <ClCompile Include="question.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="q.cpp">
+    <ClCompile Include="test.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -35,21 +35,25 @@
     <ClInclude Include="stroki.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Question.h">
+    <ClInclude Include="question.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="stack.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="usercd.h">
+    <ClInclude Include="user.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="testcd.h">
+    <ClInclude Include="test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="q.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="data.txt" />
+    <Text Include="users.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="cd.cd" />

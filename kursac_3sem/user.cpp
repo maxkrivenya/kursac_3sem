@@ -1,5 +1,5 @@
-#include"usercd.h"
-#include "Question.h"
+#include "user.h"
+#include "question.h"
 using namespace std;
 
 void User::upd_mbti(int val, q_mbti data){
@@ -12,30 +12,10 @@ void User::upd_mbti(int val, q_mbti data){
 	}
 }
 
-/*void User::upd_kettel(int val, q_kettel data) {
-	switch (data.type) {
-	case 1: {this->ket.anxiety += val; break; }
-	case 2: {this->ket.balance += val; break; }
-	case 3: {this->ket.brave += val; break; }
-	case 4: {this->ket.diplomacy += val; break; }
-	case 5: {this->ket.dreamy += val; break; }
-	case 6: {this->ket.em_stability += val; break; }
-	case 7: {this->ket.expressiveness += val; break; }
-	case 8: {this->ket.extraversy += val; break; }
-	case 9: {this->ket.independence += val; break; }
-	case 10: {this->ket.intellect += val; break; }
-	case 11: {this->ket.nonconform += val; break; }
-	case 12: { this->ket.normativity += val; break; }
-	case 13: {this->ket.radical += val; break; }
-	case 14: {this->ket.selfcontrol += val; break; }
-	case 15: {this->ket.sens += val; break; }
-	case 16: {this->ket.stress += val; break; }
-	case 17: {this->ket.sus += val; break; }
-	case 18: {this->ket.talk += val; break; }
-	case 19: {this->ket.uncalm += val; break; }
-	default: {cout << endl << "Unexpected error" << endl; exit(1); break; }
-	}
-}*/
+void User::upd_kettel(int answer, q_mbti q) {
+	this->ket[q.type] += answer;
+}
+
 
 
 ostream& operator<<(ostream& o, const User& user) {
@@ -67,4 +47,11 @@ ostream& operator<<(ostream& o, const User& user) {
 	}
 
 	return o;
+}
+
+void User::save() {
+	fstream fptr{ "users.txt" };
+	if (!fptr) { std::cout << "\nError open users\n"; return; }
+	fptr << this->name << this->male << " " << this->type.ei << " " << this->type.sn << " " << this->type.tf << " " << this->type.jp << '\n';
+	fptr.close();
 }

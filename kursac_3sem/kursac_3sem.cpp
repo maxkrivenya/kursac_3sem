@@ -1,8 +1,9 @@
-#include "testcd.h"
+#include "test.h"
 #include "stroki.h"
-#include "usercd.h"
+#include "user.h"
 #include "Question.h"
 #include "stack.h"
+#include "q.h"
 #include <fstream>
 #define n 80
 using namespace std;

@@ -27,13 +27,14 @@ public:
 	~q_mbti() {};
 };
 
-class q_kettel : public q_mbti {
+class q_shmishek : public q_mbti {
 	//friend class User;
-	int value_multiplier_male;
-	int value_multiplier_female;
+	float value_multiplier_male;
+	float value_multiplier_female;
 public:
-	q_kettel(int type = 0, str data = { 1, "\n" }) :q_mbti(type, data) {
-
+	q_shmishek(int type = 0, str data = { 1, "\n" }, float v1=  0, float v2 = 0) :q_mbti(type, data) {
+		this->value_multiplier_female = v2;
+		this->value_multiplier_male = v1;
 	}
-	~q_kettel() {};
+	~q_shmishek() {};
 };
