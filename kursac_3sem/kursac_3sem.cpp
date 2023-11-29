@@ -10,6 +10,7 @@ using namespace std;
 int main() {
 	str m{ 3, "Max" };
 	User max{ m };
+	//User max = max.auth();
 	ifstream fptr("data.txt");
 	Test test;
 	int flg = 0;

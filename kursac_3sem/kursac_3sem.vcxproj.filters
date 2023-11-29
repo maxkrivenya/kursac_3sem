@@ -54,6 +54,7 @@
   <ItemGroup>
     <Text Include="data.txt" />
     <Text Include="users.txt" />
+    <Text Include="users2.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="cd.cd" />

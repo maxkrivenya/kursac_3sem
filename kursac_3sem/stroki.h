@@ -4,10 +4,12 @@
 using namespace std;
 
 class str {
-protected:
+	friend class User;
+//protected:
+public:
 	int len;
 	char* string;
-public:
+
 	str(int l = 0, const char* s = NULL) {
 		if (!l) { return; }
 		l++;
@@ -42,6 +44,29 @@ public:
 	friend std::istream& operator>>(istream& is, str& obj);	//????
 	friend std::ostream& operator<<(ostream& os, str& obj);	//?????
 	int operator<(str cmp);
+	int operator==(str& temp) {
+		for (int i = 0; i < temp.len && i < this->len; i++) {
+			if (this->string[i] != temp[i]) {
+				return 0;
+			}
+		}
+		return 1;
+	}
+	str firstWord() {
+		str temp{ 20 };
+		int i = 0;
+		while (!isalpha(this->string[i]) && i < this->len - 1) {
+			i++;
+		}
+		int j = 0;
+		while (isalpha(this->string[i]) && j < 19 && i < this->len - 1) {
+			temp.string[j] = this->string[i];
+			j++; i++;
+		}
+		temp.string[j] = '\0';
+		str temp2{ j, temp.string };
+		return temp2;
+	}
 };
 
 //template<typename T> class String;

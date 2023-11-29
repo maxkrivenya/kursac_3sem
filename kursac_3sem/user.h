@@ -8,7 +8,8 @@
 #define ket_size 19
 #define shmish_size 8
 class User {
-	friend Test;
+	friend class str;
+	friend class Test;
 	struct mbti {
 		int ei;
 		int sn;
@@ -20,6 +21,7 @@ public:
 		//std::cout << std::endl << "Const User..." << std::endl 
 		this->name = name;
 		this->male = female;
+		this->id = rand() % 10000;
 		this->type.ei = 0;
 		this->type.sn = 0;
 		this->type.tf = 0;
@@ -32,12 +34,13 @@ public:
 	friend ostream& operator<<(ostream& o, const User& user);
 	bool male = 0;
 	void save();
-private:
+	User& auth();
+protected:
 	str name;
+	int id;							//write id 
 	struct mbti type;
 	int ket[ket_size];
 	int shmish[shmish_size];
-protected:
 	void upd_mbti(int, q_mbti q);
 	void upd_kettel(int, q_mbti q);
 };
