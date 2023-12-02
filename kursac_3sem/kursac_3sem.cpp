@@ -8,9 +8,10 @@
 #define n 80
 using namespace std;
 int main() {
-	str m{ 3, "Max" };
-	User max{ m };
-	//User max = max.auth();
+//	str m{ 3, "Max" };
+//	User max{ m };
+	User max = max.auth();
+	cout << endl << "thefuck #2" << endl;
 	ifstream fptr("data.txt");
 	Test test;
 	int flg = 0;

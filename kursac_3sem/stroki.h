@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <iomanip>
+#define N 20
 using namespace std;
 
 class str {
@@ -44,6 +45,7 @@ public:
 	friend std::istream& operator>>(istream& is, str& obj);	//????
 	friend std::ostream& operator<<(ostream& os, str& obj);	//?????
 	int operator<(str cmp);
+
 	int operator==(str& temp) {
 		for (int i = 0; i < temp.len && i < this->len; i++) {
 			if (this->string[i] != temp[i]) {
@@ -52,16 +54,43 @@ public:
 		}
 		return 1;
 	}
+/*
 	str firstWord() {
 		str temp{ 20 };
 		int i = 0;
-		while (!isalpha(this->string[i]) && i < this->len - 1) {
+		while (!isalpha(this->string[i]) && i < this->len) {
 			i++;
 		}
 		int j = 0;
-		while (isalpha(this->string[i]) && j < 19 && i < this->len - 1) {
+		while (isalpha(this->string[i]) && j < temp.len && i < this->len) {
 			temp.string[j] = this->string[i];
 			j++; i++;
+		}
+		temp.string[j] = '\0';
+		str temp2{ j, temp.string };
+		return temp2;
+	}
+*/
+	str nthWord(int n = 1) {
+		str temp{ N };
+		int i = 0;
+		int j = 0;
+
+		for (int k = 1; k < n; k++) {
+			while (!isalpha(this->string[i]) && i < this->len) {
+				i++;
+			}
+			while (isalpha(this->string[i]) && i < this->len) {
+				i++;
+			}
+		}
+
+		while (!isalpha(this->string[i]) && i < this->len) {
+			i++;
+		}
+		while (isalpha(this->string[i]) && j < temp.len && i < this->len) {
+			temp.string[j] = this->string[i];
+			i++; j++;
 		}
 		temp.string[j] = '\0';
 		str temp2{ j, temp.string };

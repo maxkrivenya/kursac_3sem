@@ -20,7 +20,6 @@ void User::upd_kettel(int answer, q_mbti q) {
 
 ostream& operator<<(ostream& o, const User& user) {
 	o << endl << "MBTI: ";
-	//<< user.type.ei << ' ' << user.type.sn << ' ' << user.type.tf << ' ' << user.type.jp << endl;
 	if (user.type.ei >= 0) {
 		o << 'E';
 	}
@@ -59,7 +58,7 @@ void User::save() {
 
 	str temp{ 80 };
 	str temp2{ 80 };
-	
+
 	do {
 		
 		old_fptr.getline(temp.string, 70);
@@ -68,9 +67,9 @@ void User::save() {
 		}
 		
 		
-		temp2 = temp.firstWord();
+		temp2 = temp.nthWord();
 
-		if (temp2 == this->name) {
+		if (!strcmp(temp2.string, this->name)) {
 			break;
 		}
 
@@ -83,13 +82,13 @@ void User::save() {
 		new_fptr << temp << endl;
 	} while (!(old_fptr.eof()));
 
-	//no id copy
-	new_fptr << this->name << " " << this->id << endl << this->male << " " << this->type.ei << " " << this->type.sn << " " << this->type.tf << " " << this->type.jp << '\n';
+	new_fptr << this->name << " " << this->pass << " " << this->id << endl << this->male << " " << this->type.ei << " " << this->type.sn << " " << this->type.tf << " " << this->type.jp;
 	old_fptr.getline(temp.string, 70);
-
 	while (!(old_fptr.eof())) {
 		old_fptr.getline(temp.string, 70);
-		new_fptr << temp << endl;
+		new_fptr << endl << temp ;
+		if (old_fptr.eof())
+			break;
 	}
 	old_fptr.close();
 	new_fptr.close();
@@ -100,38 +99,55 @@ void User::save() {
 }
 
 User& User::auth() {
-	str login2{ 10 };
-	str login;
+	str login{ N };
+	str password{ N };
+	str login_s;
+	str password_s;
 	str temp{ 80 };
+	int newid = 0;
+	int hui = 0;
 	int i = 3;
-	bool flag = false;
 	do{
 		cout << endl << "Login: ";
-		cin >> login2.string;
-		login = { login2 };
+		cin >> login.string;
+		login = login.nthWord();
+
 		ifstream fptr{ "users.txt" };
 		if (!fptr) {
 			cout << endl << "ERROR: file not open in user::auth";
-			User u{ login };
+			User u{ login, login };
 			return u;
 		}
 
 		do {
-			fptr >> temp.string;
-			
-			temp = temp.firstWord();
-			
-			cout << endl << "result: " << (temp == login) << endl << temp;
-			if (login == temp) {
-				flag = true;
-				fptr.close();
-				User u{ login };
-				return u;
+			newid = 0;
+			fptr.getline(temp.string, 40);
+			login_s = temp.nthWord(1);
+			password_s = temp.nthWord(2);
+			for (i = 0; !isdigit(temp[i]) && i < temp.len; i++);
+			int j = 3;
+			for (; j >= 0 && i < temp.len && isdigit(temp[i]); j--, i++) {
+				hui = temp[i] - '0';
+				for(int k = j; k > 0; k--)
+					hui *= 10;
+				newid += hui;
 			}
 
-			fptr >> temp.string;
+			if (login == login_s) {
+				do {
+					cout << endl << "Password: ";
+					cin >> password.string;
+					if (password == password_s) {
+						fptr.close();
+						User u{ login_s, password_s, newid };
+						cout << endl << "thefuck ";
+						return u;
+					}
+				}while(1);
+			}
+			fptr.getline(temp.string, 40);
 		} while (!fptr.eof());
 		fptr.close();
 		i--;
-	}while (!flag && i);
+	}while (i);
 }

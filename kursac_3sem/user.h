@@ -7,6 +7,7 @@
 #include "test.h"
 #define ket_size 19
 #define shmish_size 8
+#define id_size 5
 class User {
 	friend class str;
 	friend class Test;
@@ -17,11 +18,12 @@ class User {
 		int	jp;
 	};
 public:
-	User(str& name, bool female = false) {
+	User(str& name, str& pass, int id = 0, bool female = false) {
 		//std::cout << std::endl << "Const User..." << std::endl 
-		this->name = name;
+		strcpy_s(this->name, N - 1, name.string);
+		strcpy_s(this->pass, N - 1, pass.string);
+		this->id = id;
 		this->male = female;
-		this->id = rand() % 10000;
 		this->type.ei = 0;
 		this->type.sn = 0;
 		this->type.tf = 0;
@@ -36,8 +38,9 @@ public:
 	void save();
 	User& auth();
 protected:
-	str name;
-	int id;							//write id 
+	char name[N];
+	char pass[N];
+	int id;						//write id 
 	struct mbti type;
 	int ket[ket_size];
 	int shmish[shmish_size];
