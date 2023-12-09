@@ -1,6 +1,10 @@
 Milk Brest 1111
 0 0 0 0 0
 Max Krivenya 1112
-0 9 6 9 3
+0 9 6 39 3
 Cheese Cheddar 1113
 0 6 3 6 3
+Aleksey amkrivenya 1114
+0 0 0 0 0
+Chicken Grodno 1115
+1 11 7 11 4

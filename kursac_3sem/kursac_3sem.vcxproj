@@ -128,17 +128,20 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="kursac_3sem.cpp" />
+    <ClCompile Include="kursac_functions.cpp" />
     <ClCompile Include="test.cpp" />
     <ClCompile Include="question.cpp" />
     <ClCompile Include="stroki.cpp" />
     <ClCompile Include="user.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="q.h" />
+    <ClInclude Include="kursac_functions.h" />
+    <ClInclude Include="list.h" />
     <ClInclude Include="question.h" />
     <ClInclude Include="stack.h" />
     <ClInclude Include="stroki.h" />
     <ClInclude Include="test.h" />
+    <ClInclude Include="tree.h" />
     <ClInclude Include="user.h" />
   </ItemGroup>
   <ItemGroup>
@@ -147,7 +150,7 @@
     <Text Include="users2.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="cd.cd" />
+    <None Include="CD.CD" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -25,7 +25,6 @@ public:
 	void show();
 	void test(User&);
 	void choice(User&, int, int);
-	//friend void User::upd_ei(int);
 };
 
 class Test_Shmisheka : public Test {

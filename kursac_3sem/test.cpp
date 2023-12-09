@@ -69,7 +69,7 @@ void Test::show() {
  
 void Test::test(User& user) {
 	if (this->root == NULL) {
-		std::cout << std::endl << "Empty list." << std::endl;
+		std::cout << std::endl << "Empty List." << std::endl;
 		return;
 	}
 	int result = 0;

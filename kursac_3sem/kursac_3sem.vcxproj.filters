@@ -30,6 +30,9 @@
     <ClCompile Include="test.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="kursac_functions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stroki.h">
@@ -47,7 +50,13 @@
     <ClInclude Include="test.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="q.h">
+    <ClInclude Include="list.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="tree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="kursac_functions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -57,6 +66,6 @@
     <Text Include="users2.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="cd.cd" />
+    <None Include="CD.CD" />
   </ItemGroup>
 </Project>
