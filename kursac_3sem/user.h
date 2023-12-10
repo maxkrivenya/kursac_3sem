@@ -34,7 +34,7 @@ public:
 	~User() {
 		//std::cout << std::endl << "Destr User" << std::endl;
 	}
-	friend ostream& operator<<(ostream& o, const User& user);
+	friend ostream& operator<<(ostream& os, const User& user);
 	friend void mbti_test(List<q_mbti> list, User& user);
 	bool male = 0;
 	void save();

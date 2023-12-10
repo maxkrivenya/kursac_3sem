@@ -1,11 +1,10 @@
 #include "kursac_functions.h"
 #include "List.h"
 #include <fstream>
-using namespace std;
 User& Register() {
 	ifstream fptr{ "users.txt" };
 	if (!fptr) {
-		cout << endl << "file open error in register" << endl;
+		std::cout << std::endl << "file open error in register" << std::endl;
 		exit(1);
 	}
 	int str_amt = 0;
@@ -20,30 +19,38 @@ User& Register() {
 		fptr.getline(temp.string, 79);
 	}
 	id = 1111 + (str_amt / 2);
-	cout << endl << "stramt = " << str_amt << endl;
+	NEWLINE;
+	std::cout << "stramt = " << str_amt;
+	NEWLINE;
 	fptr.close();
 	fstream fptr2{ "users.txt", std::ios::app };
-	cout << endl << "Login: ";
+	std::cout << std::endl << "Login: ";
 	cin >> login.string;
 	login = login.nthWord();
-	cout << endl << "Are you male or female? (0/1): ";
+	NEWLINE;
+	std::cout << "Are you male or female? (0/1): ";
 	cin >> male;
 	do {
-		cout << endl << "Password: ";
+		NEWLINE;
+		std::cout << "Password: ";
 		cin >> password.string;
 		password = password.nthWord();
-		cout << endl << "Repeat password: ";
+		NEWLINE;
+		std::cout << "Repeat password: ";
 		cin >> password2.string;
 		password2 = password2.nthWord();
 
-		if (!(password == password2))
-			cout << endl << "Passwords don't match" << endl;
+		if (!(password == password2)) {
+			NEWLINE;
+			std::cout <<"Passwords don't match";
+			NEWLINE;
+		}
 	} while (!(password == password2));
 
-	fptr2 << endl <<
+	fptr2 << std::endl <<
 		login << " " <<
 		password << " " <<
-		id << endl <<
+		id << std::endl <<
 		male << " " <<
 		0 << " " << 0 << " " << 0 << " " << 0;
 
@@ -53,7 +60,9 @@ User& Register() {
 
 void mbti_test(List<q_mbti> list, User& user){
 	if (list.isEmpty()) {
-		std::cout << std::endl << "Empty List." << std::endl;
+		NEWLINE;
+		std::cout << "Empty List.";
+		NEWLINE;
 		return;
 	}
 	int curr = 0;
@@ -85,7 +94,8 @@ void mbti_test(List<q_mbti> list, User& user){
 		choice = 0;
 		q_header(curr);
 		(*it).value.sout();
-		std::cout << std::endl << "Your answer:  ";
+		NEWLINE;
+		std::cout << "Your answer:  ";
 		std::cin >> choice;
 
 		if (choice < 0) {
@@ -107,16 +117,33 @@ void mbti_test(List<q_mbti> list, User& user){
 	}
 
 	system("CLS");
-	std::cout << "Your result is: " << user << std::endl;
-	user.save();
+	std::cout << "Your result is: " << user;
+	bool wannasave = true;
+	NEWLINE;
+	std::cout << "If you don't want to save, type 0: ";
+	std::cin >> wannasave;
+	if (wannasave) {
+		user.save();
+	}
 }
 
 void q_header(int curr) {
 	system("CLS");
-	for (int i = 0; i < CONSOLE_WIDTH; i++)
-		cout << '=';
-	cout << endl;
-	cout << setw(CONSOLE_WIDTH/2) << "Question #" << curr << endl;
-	for (int i = 0; i < CONSOLE_WIDTH; i++)
-		cout << '=';
+	SKIP(CONSOLE_WIDTH / 2 - 11);
+	REPEAT('-', 15);
+	NEWLINE;
+	SKIP(CONSOLE_WIDTH / 2);
+	std::cout << "| Question #" << curr << " |";
+	NEWLINE;
+	SKIP(CONSOLE_WIDTH / 2 - 11);
+	REPEAT('-', 15);
+}
+
+void REPEAT(char c, int amt) {
+	for (int i = 0; i < amt; i++)
+		std::cout << c;
+}
+
+void SKIP(int amt) {
+	std::cout << setw(amt);
 }

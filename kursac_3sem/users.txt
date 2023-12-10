@@ -1,7 +1,7 @@
 Milk Brest 1111
 0 0 0 0 0
 Max Krivenya 1112
-0 -2 -1 -2 -1
+0 -4 -2 -4 -2
 Cheese Cheddar 1113
 0 6 3 6 3
 Aleksey amkrivenya 1114

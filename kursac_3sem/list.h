@@ -64,6 +64,7 @@ public:
 			this->next = NULL;
 			this->prev = NULL;
 		}
+		~Node() { ; }
 	protected:
 		Node* next;
 		Node* prev;
