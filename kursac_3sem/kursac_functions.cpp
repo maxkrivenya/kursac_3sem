@@ -3,7 +3,7 @@
 #include <fstream>
 using namespace std;
 User& Register() {
-	ifstream fptr{ "users.txt"};
+	ifstream fptr{ "users.txt" };
 	if (!fptr) {
 		cout << endl << "file open error in register" << endl;
 		exit(1);
@@ -40,17 +40,51 @@ User& Register() {
 			cout << endl << "Passwords don't match" << endl;
 	} while (!(password == password2));
 
-	fptr2 << endl << 
-			 login	<< " " << 
-			 password << " " <<
-			 id << endl << 
-			 male << " " << 
-		     0 << " " << 0 << " " << 0 << " " << 0;
+	fptr2 << endl <<
+		login << " " <<
+		password << " " <<
+		id << endl <<
+		male << " " <<
+		0 << " " << 0 << " " << 0 << " " << 0;
 
 	User new_user{ login, password, id, male };
 	return new_user;
 }
 
-void mbti_test(List<q_mbti>){
+void mbti_test(List<q_mbti> list, User& user){
+	if (list.isEmpty()) {
+		std::cout << std::endl << "Empty List." << std::endl;
+		return;
+	}
+	int result = 0;
+	std::cout << std::endl << "Welcome to the MBTI Test."
+		<< std::endl << "The rules are simple:"
+		<< std::endl << "\tYou will be shown a statement."
+		<< std::endl << "\tPlease input a number from -3 to 3 as your answer depending on how much you agree with the statement."
+		<< std::endl << "To start the Test, input any number." << std::endl << std::endl << "Your answer:  ";;
+	cin >> result;
+	result = 0;
+	//Node<T>* temp = list.head;
+	//while (temp != NULL) {
+	//	int choice = 0;
+	//	system("CLS");
+	//	cout << temp->data;
+	//	std::cout << std::endl << "Your answer:  ";
+	//	std::cin >> choice;
+	//	user.upd_mbti(choice, temp->data);
+	//	temp = temp->next;
+	//}
 
+	for (List<q_mbti>::Iterator it = list.begin(); it != list.end(); it++) {
+		int choice = 0;
+		system("CLS");
+		(*it).value.sout();
+		std::cout << std::endl << "Your answer:  ";
+		std::cin >> choice;
+		user.upd_mbti(choice, (*it).value.Type());
+	}
+
+	system("CLS");
+	std::cout << "Your result is: " << user << std::endl;
+	user.save();
 }

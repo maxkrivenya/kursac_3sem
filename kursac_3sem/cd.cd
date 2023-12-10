@@ -1,66 +1,66 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ListIterator&lt;List&gt;">
+    <Position X="22.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAQAAAAQAEAAwAAAAEAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>list.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="List&lt;T&gt;" Collapsed="true">
+    <Position X="19.25" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEACgAAAAAAAgAAAAAAQAAAAAAAAAAAIAAAAQgI=</HashCode>
+      <FileName>list.h</FileName>
+    </TypeIdentifier>
+  </Class>
   <Class Name="Question" Collapsed="true">
-    <Position X="7.75" Y="2" Width="1.5" />
+    <Position X="15" Y="1" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAEAAAQAAIAAAI=</HashCode>
       <FileName>question.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="q_mbti" Collapsed="true">
-    <Position X="7.75" Y="3.25" Width="1.5" />
+    <Position X="15" Y="2.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAACAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAABA=</HashCode>
+      <HashCode>AAAAAAAACAAAAAAAAAAAAAAAEAABAAAAAQAAAAAAABA=</HashCode>
       <FileName>question.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="q_shmishek" Collapsed="true">
-    <Position X="7.75" Y="4.75" Width="1.5" />
+    <Position X="15" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAgCAAAAAAAAAAAAAQAAAAAAAAAAAgAAAAAAAAA=</HashCode>
       <FileName>question.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="stack&lt;T&gt;" Collapsed="true">
-    <Position X="15" Y="2" Width="1.5" />
+    <Position X="17.5" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAgAAAAAAAAAKAABAAIAAAAACA=</HashCode>
       <FileName>stack.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="str" Collapsed="true">
-    <Position X="13.25" Y="3" Width="1.5" />
+    <Position X="19.25" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAEAAAAAABAAgAAUAGAAQAAAAEAACAAAAAgAAAAAAA=</HashCode>
       <FileName>stroki.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Test" Collapsed="true">
-    <Position X="10.75" Y="2" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAIAAEAAAAAAAgAgAAAIAAAAAAAIBAAICAAAAAA=</HashCode>
-      <FileName>test.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Test_Shmisheka" Collapsed="true">
-    <Position X="10.75" Y="3.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAQAAAAAAABA=</HashCode>
-      <FileName>test.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="User" Collapsed="true">
-    <Position X="15" Y="3" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AgABAAAKAACAAAEFAAAEAAAAAAAFAAAAEAAAAAAAAgA=</HashCode>
-      <FileName>user.h</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="binTree&lt;T&gt;" Collapsed="true">
-    <Position X="13.25" Y="2" Width="1.5" />
+    <Position X="17.5" Y="1" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAACAAACADAQAoAgCQAQAAAAAAAACAAKRAAAAAA=</HashCode>
       <FileName>tree.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="User" Collapsed="true">
+    <Position X="21" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgABAAAKAACAAAEFAAAEAAAAAAAFAAAAEAAAAAAAAgA=</HashCode>
+      <FileName>user.h</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

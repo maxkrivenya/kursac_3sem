@@ -5,6 +5,7 @@
 #include "stroki.h"
 #include "Question.h"
 #include "test.h"
+#include "list.h"
 #define ket_size 19
 #define shmish_size 8
 #define id_size 5
@@ -34,6 +35,7 @@ public:
 		//std::cout << std::endl << "Destr User" << std::endl;
 	}
 	friend ostream& operator<<(ostream& o, const User& user);
+	friend void mbti_test(List<q_mbti> list, User& user);
 	bool male = 0;
 	void save();
 	User& auth();

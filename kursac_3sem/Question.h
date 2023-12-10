@@ -1,7 +1,10 @@
 #pragma once
 #include "stroki.h"
+#include "list.h"
+
 class Question {
-	friend class Test;
+	template <class shit>
+	friend class ListIterator;
 public:
 	Question(str data) {
 		this->data = data;
@@ -16,6 +19,8 @@ protected:
 
 
 class q_mbti : public Question {
+//	template <class shit>
+//	friend class ListIterator;
 	friend class User;
 protected:
 	int type;
@@ -25,6 +30,12 @@ public:
 		this->type = type;
 	}
 	~q_mbti() {};
+	void sout() {
+		std::cout << std::endl << this->data << std::endl;
+	}
+	int Type() {
+		return this->type;
+	}
 };
 
 class q_shmishek : public q_mbti {
