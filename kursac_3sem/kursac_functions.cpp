@@ -56,35 +56,67 @@ void mbti_test(List<q_mbti> list, User& user){
 		std::cout << std::endl << "Empty List." << std::endl;
 		return;
 	}
-	int result = 0;
+	int curr = 0;
+	int choice = 0;
 	std::cout << std::endl << "Welcome to the MBTI Test."
 		<< std::endl << "The rules are simple:"
 		<< std::endl << "\tYou will be shown a statement."
-		<< std::endl << "\tPlease input a number from -3 to 3 as your answer depending on how much you agree with the statement."
-		<< std::endl << "To start the Test, input any number." << std::endl << std::endl << "Your answer:  ";;
-	cin >> result;
-	result = 0;
-	//Node<T>* temp = list.head;
-	//while (temp != NULL) {
-	//	int choice = 0;
-	//	system("CLS");
-	//	cout << temp->data;
-	//	std::cout << std::endl << "Your answer:  ";
-	//	std::cin >> choice;
-	//	user.upd_mbti(choice, temp->data);
-	//	temp = temp->next;
-	//}
+		<< std::endl << "\tTo quit the test, input a negative number."
+		<< std::endl << "\tTo return to the previous question, input 0."
+		<< std::endl << "\tPlease input a number from 1 to 5 as your answer depending on how much you agree with the statement."
+		<< std::endl << "To start the Test, input any number." << std::endl 
+		<< std::endl << "To return, input a negative number." << std::endl
+		<< std::endl << "Your answer:  ";
+	cin >> choice;
+	if (choice < 0) {
+		return;
+	}
 
+	choice = 0;
+	bool flg = false;
 	for (List<q_mbti>::Iterator it = list.begin(); it != list.end(); it++) {
-		int choice = 0;
-		system("CLS");
+		if (flg) {
+			it--;
+		}
+		else {
+			curr++;
+		}
+		flg = false;
+		choice = 0;
+		q_header(curr);
 		(*it).value.sout();
 		std::cout << std::endl << "Your answer:  ";
 		std::cin >> choice;
-		user.upd_mbti(choice, (*it).value.Type());
+
+		if (choice < 0) {
+			return;
+		}
+		if (!choice) {
+			flg = true;    
+			curr--;
+			if (curr < 1) {
+				curr = 1;
+			}
+			if (it != list.begin()) {
+				it--;
+			}
+		}
+		else {
+			user.upd_mbti(choice-3, (*it).value.Type());
+		}
 	}
 
 	system("CLS");
 	std::cout << "Your result is: " << user << std::endl;
 	user.save();
+}
+
+void q_header(int curr) {
+	system("CLS");
+	for (int i = 0; i < CONSOLE_WIDTH; i++)
+		cout << '=';
+	cout << endl;
+	cout << setw(CONSOLE_WIDTH/2) << "Question #" << curr << endl;
+	for (int i = 0; i < CONSOLE_WIDTH; i++)
+		cout << '=';
 }

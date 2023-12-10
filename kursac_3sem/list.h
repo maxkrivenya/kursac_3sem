@@ -20,7 +20,7 @@ public:
 		return iterator;
 	}
 	ListIterator& operator--() {
-		m_Ptr--;
+		m_Ptr = m_Ptr->prev;
 		return *this;
 	}
 	ListIterator operator--(int) {
@@ -29,7 +29,11 @@ public:
 		return iterator;
 	}
 	ReferenceType operator[](int index) {
-		return *(m_Ptr + index);
+		while (index && m_Ptr != NULL) {
+			++(*this);
+			index--;
+		}
+		return *m_Ptr;
 	}
 	PointerType operator->() {
 		return m_Ptr;
