@@ -83,6 +83,7 @@ void mbti_test(List<q_mbti> list, User& user){
 
 	choice = 0;
 	bool flg = false;
+	stack<int> answ;
 	for (List<q_mbti>::Iterator it = list.begin(); it != list.end(); it++) {
 		if (flg) {
 			it--;
@@ -97,12 +98,14 @@ void mbti_test(List<q_mbti> list, User& user){
 		NEWLINE;
 		std::cout << "Your answer:  ";
 		std::cin >> choice;
-
 		if (choice < 0) {
 			return;
 		}
 		if (!choice) {
 			flg = true;    
+			if (curr > 1 || !(answ.isEmpty())) {
+				user.upd_mbti(answ.pop(), (*it).value.Type());
+			}
 			curr--;
 			if (curr < 1) {
 				curr = 1;
@@ -110,9 +113,12 @@ void mbti_test(List<q_mbti> list, User& user){
 			if (it != list.begin()) {
 				it--;
 			}
+			
 		}
 		else {
-			user.upd_mbti(choice-3, (*it).value.Type());
+			choice -= 3;
+			answ.push((-1) * choice);
+			user.upd_mbti(choice, (*it).value.Type());
 		}
 	}
 

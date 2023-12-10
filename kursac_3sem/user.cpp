@@ -19,7 +19,7 @@ void User::upd_kettel(int answer, q_mbti q) {
 
 
 ostream& operator<<(ostream& o, const User& user) {
-	o << endl << "MBTI: ";
+	//o << endl << "MBTI: ";
 	if (user.type.ei >= 0) {
 		o << 'E';
 	}
@@ -75,15 +75,15 @@ void User::save() {
 
 		new_fptr << temp << endl;
 
-		old_fptr.getline(temp.string, 70);
-		if (!temp[0] && !temp[1]) {
-			old_fptr.getline(temp.string, 70);
-		}
-		new_fptr << temp << endl;
+		//old_fptr.getline(temp.string, 70);
+		//if (!temp[0] && !temp[1]) {
+		//	old_fptr.getline(temp.string, 70);
+		//}
+		//new_fptr << temp << endl;
 	} while (!(old_fptr.eof()));
 
-	new_fptr << this->name << " " << this->pass << " " << this->id << endl << this->male << " " << this->type.ei << " " << this->type.sn << " " << this->type.tf << " " << this->type.jp;
-	old_fptr.getline(temp.string, 70);
+	new_fptr << this->name << " " << this->pass << " " << this->id << " " << (*this); //<< endl << this->male << " " << this->type.ei << " " << this->type.sn << " " << this->type.tf << " " << this->type.jp;
+	//old_fptr.getline(temp.string, 70);
 	while (!(old_fptr.eof())) {
 		old_fptr.getline(temp.string, 70);
 		new_fptr << endl << temp ;
@@ -145,7 +145,7 @@ User& User::auth() {
 					}
 				}while(1);
 			}
-			fptr.getline(temp.string, 40);
+			//fptr.getline(temp.string, 40);
 		} while (!fptr.eof());
 		fptr.close();
 		i--;

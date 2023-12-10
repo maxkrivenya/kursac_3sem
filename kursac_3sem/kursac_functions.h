@@ -10,4 +10,3 @@ void q_header(int curr);
 void mbti_test(List<q_mbti>, User& user);
 void REPEAT(char c, int amt);
 void SKIP(int amt);
-//void NEWLINE();

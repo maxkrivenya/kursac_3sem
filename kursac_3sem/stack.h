@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <iomanip>
+#include "kursac_functions.h"
 
 template <class T> class stack {
 	struct node {
@@ -18,7 +19,9 @@ public:
 		deleteStack();
 	}
 	void push(T val);
+	T pop();
 	void show();
+	bool isEmpty();
 private:
 	void deleteStack();
 };
@@ -45,4 +48,23 @@ void stack<T>::show() {
 		temp = temp->next;
 	}
 	std::cout << "End of stack" << std::endl;
+}
+
+template <class T>
+T stack<T>::pop() {
+	if (this->root == NULL) {
+		std::cout << std::endl << "stack empty";
+		exit(1);
+	}
+	T temp = this->root->val;
+	this->root = this->root->next;
+	return temp;
+}
+
+template <class T>
+bool stack<T>::isEmpty() {
+	if (this->root == NULL) {
+		return true;
+	}
+	return false;
 }
