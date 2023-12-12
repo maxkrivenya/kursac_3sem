@@ -1,6 +1,7 @@
 #include "kursac_functions.h"
 #include "List.h"
 #include <fstream>
+
 User& Register() {
 	ifstream fptr{ "users.txt" };
 	if (!fptr) {
@@ -104,7 +105,7 @@ void mbti_test(List<q_mbti> list, User& user){
 		if (!choice) {
 			flg = true;    
 			if (curr > 1 || !(answ.isEmpty())) {
-				user.upd_mbti(answ.pop(), (*it).value.Type());
+				user.upd_mbti(answ.pop(), (*it).value.getType());
 			}
 			curr--;
 			if (curr < 1) {
@@ -118,7 +119,7 @@ void mbti_test(List<q_mbti> list, User& user){
 		else {
 			choice -= 3;
 			answ.push((-1) * choice);
-			user.upd_mbti(choice, (*it).value.Type());
+			user.upd_mbti(choice, (*it).value.getType());
 		}
 	}
 

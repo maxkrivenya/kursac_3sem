@@ -20,7 +20,6 @@ class User {
 	};
 public:
 	User(str& name, str& pass, int id = 0, bool female = false) {
-		//std::cout << std::endl << "Const User..." << std::endl 
 		strcpy_s(this->name, N - 1, name.string);
 		strcpy_s(this->pass, N - 1, pass.string);
 		this->id = id;
@@ -29,11 +28,8 @@ public:
 		this->type.sn = 0;
 		this->type.tf = 0;
 		this->type.jp = 0;
-		//std::cout << std::endl << "User Constructed" << std::endl;
 	}
-	~User() {
-		//std::cout << std::endl << "Destr User" << std::endl;
-	}
+	~User() {;}
 	friend ostream& operator<<(ostream& os, const User& user);
 	friend void mbti_test(List<q_mbti> list, User& user);
 	bool male = 0;
@@ -42,7 +38,7 @@ public:
 protected:
 	char name[N];
 	char pass[N];
-	int id;						//write id 
+	int id;	
 	struct mbti type;
 	int ket[ket_size];
 	int shmish[shmish_size];

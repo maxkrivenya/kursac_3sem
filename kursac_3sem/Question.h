@@ -19,27 +19,23 @@ protected:
 
 
 class q_mbti : public Question {
-//	template <class shit>
-//	friend class ListIterator;
 	friend class User;
 protected:
 	int type;
 public:
 	q_mbti(int type = 0, str data = {1, "\n"}) :Question(data) {
-		//this->data = data;
 		this->type = type;
 	}
 	~q_mbti() {};
 	void sout() {
 		std::cout << std::endl << this->data << std::endl;
 	}
-	int Type() {
+	int getType() {
 		return this->type;
 	}
 };
 
 class q_shmishek : public q_mbti {
-	//friend class User;
 	float value_multiplier_male;
 	float value_multiplier_female;
 public:
@@ -48,4 +44,17 @@ public:
 		this->value_multiplier_male = v1;
 	}
 	~q_shmishek() {};
+};
+
+
+class q_driver : public q_mbti {
+	template <class T>
+	friend class binTree;
+protected:
+	int answer;
+public:
+	q_driver(int type = 0, str data = { 1, "\n" }, int answer = 0) :q_mbti(type, data) {
+		this->answer = answer;
+	}
+	~q_driver() {};
 };

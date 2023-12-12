@@ -16,10 +16,7 @@ void User::upd_kettel(int answer, q_mbti q) {
 	this->ket[q.type] += answer;
 }
 
-
-
 ostream& operator<<(ostream& o, const User& user) {
-	//o << endl << "MBTI: ";
 	if (user.type.ei >= 0) {
 		o << 'E';
 	}
@@ -66,7 +63,6 @@ void User::save() {
 			old_fptr.getline(temp.string, 70);
 		}
 		
-		
 		temp2 = temp.nthWord();
 
 		if (!strcmp(temp2.string, this->name)) {
@@ -74,16 +70,9 @@ void User::save() {
 		}
 
 		new_fptr << temp << endl;
-
-		//old_fptr.getline(temp.string, 70);
-		//if (!temp[0] && !temp[1]) {
-		//	old_fptr.getline(temp.string, 70);
-		//}
-		//new_fptr << temp << endl;
 	} while (!(old_fptr.eof()));
 
-	new_fptr << this->name << " " << this->pass << " " << this->id << " " << (*this); //<< endl << this->male << " " << this->type.ei << " " << this->type.sn << " " << this->type.tf << " " << this->type.jp;
-	//old_fptr.getline(temp.string, 70);
+	new_fptr << this->name << " " << this->pass << " " << this->id << " " << (*this);
 	while (!(old_fptr.eof())) {
 		old_fptr.getline(temp.string, 70);
 		new_fptr << endl << temp ;
@@ -140,12 +129,11 @@ User& User::auth() {
 					if (password == password_s) {
 						fptr.close();
 						User u{ login_s, password_s, newid };
-						cout << endl << "thefuck ";
+						system("CLS");
 						return u;
 					}
 				}while(1);
 			}
-			//fptr.getline(temp.string, 40);
 		} while (!fptr.eof());
 		fptr.close();
 		i--;

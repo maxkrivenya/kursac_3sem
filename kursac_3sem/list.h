@@ -69,7 +69,6 @@ public:
 		Node* next;
 		Node* prev;
 	};
-//public:
 	using ValueType = T;
 	using NodeType = class Node;
 	using Iterator = ListIterator<List<T>>;

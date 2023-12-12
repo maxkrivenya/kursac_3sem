@@ -7,6 +7,7 @@ char str::operator[](int n) {
 	}
 	return '\0';
 }
+
 str str::operator+ (const str& s) {						  
 	str st{ this->len + s.len };
 	int i = 0;
@@ -33,11 +34,7 @@ str str::operator*= (const char* abc) {
 }
 
 ostream& operator<<(ostream& os, str& obj) {				 
-	os <<
-		//'[' << obj.len << "]\t"  << 
-		obj.string
-		// << endl
-		;
+	os << obj.string;
 	return os;
 }
 
@@ -78,4 +75,51 @@ int str::operator>(str cmp) {
 
 int str::operator<(str cmp) {							
 	return this->len <= cmp.len;
+}
+
+void str::encode() {
+	for (int i = 0; i < this->len; i++) {
+		this->string[i] += len;
+	}
+}
+
+void str::decode() {
+	for (int i = 0; i < this->len; i++) {
+		this->string[i] -= len;
+	}
+}
+
+int str::operator==(str& temp) {
+	for (int i = 0; i < temp.len && i < this->len; i++) {
+		if (this->string[i] != temp[i]) {
+			return 0;
+		}
+	}
+	return 1;
+}
+
+str str::nthWord(int n) {
+	str temp{ N };
+	int i = 0;
+	int j = 0;
+
+	for (int k = 1; k < n; k++) {
+		while (!isalpha(this->string[i]) && i < this->len) {
+			i++;
+		}
+		while (isalpha(this->string[i]) && i < this->len) {
+			i++;
+		}
+	}
+
+	while (!isalpha(this->string[i]) && i < this->len) {
+		i++;
+	}
+	while (isalpha(this->string[i]) && j < temp.len && i < this->len) {
+		temp.string[j] = this->string[i];
+		i++; j++;
+	}
+	temp.string[j] = '\0';
+	str temp2{ j, temp.string };
+	return temp2;
 }

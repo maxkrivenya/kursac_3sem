@@ -13,23 +13,16 @@ template <class T> class stack {
 public:
 	stack(){
 		this->root = NULL;
-		std::cout << std::endl << "Constr stack" << std::endl;
 	}
 	~stack() {
-		deleteStack();
+		;
 	}
 	void push(T val);
 	T pop();
 	void show();
 	bool isEmpty();
-private:
-	void deleteStack();
 };
 
-template <class T>
-void stack<T>::deleteStack() {
-	std::cout << std::endl << "Stack deleted" << std::endl;
-}
 
 template <class T>
 void stack<T>::push(T s) {

@@ -1,5 +1,10 @@
-﻿  user.cpp
-D:\github\kursac_3sem\kursac_3sem\kursac_3sem\user.cpp(153): warning C4715: 'User::auth': not all control paths return a value
-D:\github\kursac_3sem\kursac_3sem\kursac_3sem\user.cpp(119): warning C4172: returning address of local variable or temporary: u
-D:\github\kursac_3sem\kursac_3sem\kursac_3sem\user.cpp(144): warning C4172: returning address of local variable or temporary: u
+﻿  kursac_3sem.cpp
+  kursac_functions.cpp
+  question.cpp
+  user.cpp
+  Generating Code...
+D:\github\kursac_3sem\kursac_3sem\kursac_3sem\user.cpp(141): warning C4715: 'User::auth': not all control paths return a value
+D:\github\kursac_3sem\kursac_3sem\kursac_3sem\user.cpp(108): warning C4172: returning address of local variable or temporary: u
+D:\github\kursac_3sem\kursac_3sem\kursac_3sem\user.cpp(133): warning C4172: returning address of local variable or temporary: u
+D:\github\kursac_3sem\kursac_3sem\kursac_3sem\kursac_functions.cpp(59): warning C4172: returning address of local variable or temporary: new_user
   kursac_3sem.vcxproj -> D:\github\kursac_3sem\kursac_3sem\kursac_3sem\x64\Debug\kursac_3sem.exe

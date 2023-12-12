@@ -4,83 +4,78 @@
 
 template <class T>
 class binTree {
-	struct node {
+	class Node {
+		friend class binTree;
+	protected:
+		Node* next_left;
+		Node* next_right;
+		Node* prev_left;
+		Node* prev_right;
+	public:
 		int depth;
 		int shift;
 		T value;
-		struct node* left;
-		struct node* right;
-		struct node* prev;
+		//public:
+		Node(T value, Node** prev_left = NULL, Node** prev_right = NULL) {
+			this->value = value;
+			this->depth = 0;
+			this->shift = 0;
+			this->next_left = NULL;
+			this->next_right = NULL;
+			this->prev_left = NULL;
+			this->prev_right = NULL;
+			if (prev_left != NULL) {
+				if (*prev_left != NULL) {
+					this->prev_left = *(prev_left);
+					this->depth = (*prev_left)->depth + 1;
+					this->shift = (*prev_left)->shift + 1;
+				}
+			}
+			if (prev_right != NULL) {
+				if (*prev_right != NULL) {
+					this->prev_right = *(prev_right);
+					this->depth = (*prev_right)->depth + 1;
+					this->shift = (*prev_right)->shift;
+				}
+			}
+		}
+		~Node() { ; }
 	};
 public:
-	binTree();										//конструктор
-	~binTree();										//деструктор
-	int size() { return this->treeSize; }			//геттер размера
-	int groot() { return this->root->value; }		//геттер значения корня
-	int gbegin() { return this->begin; }			//геттер мин. значения
-	int gend() { return this->end; }				//геттер макс значения
-	void push_s(T value, int depth = 0);			//доюавление элемента
-	void log();										//вывод дерева
-	void deleteLog(struct node* node);				//удаление дерева
-	void deleteBranch(struct node* node);			//удаление ветви
-	void find(T);									//поиск элемента
+	binTree();
+	~binTree();
+
+	void nodeAdd(T value, Node** prev_left = NULL, Node** prev_right = NULL);
+
+	void push_question(T value);
+
+	void log();
+	void deleteLog(Node* node);
+	void deleteBranch(Node* node);
+	void circle();
 private:
-	struct node* root;								//корень дерева
-	int treeSize;									//колво элементов дерева
-	int begin;										//мин. элемент
-	int end;										//макс. элемент
-	void push(struct node** node_left, struct node** prev, T val, int depth = 0, int shift = 0);	//поиск позиции нового элемента в дереве
-	void node_add(struct node** node, T val, int depth = 0, int shift = 0);							//добавление нового элемента на позицию
+	Node* test_begin;
+	Node* test_end;
 };
-template  <class T>
-void binTree<T>::find(T value) {
-	struct node* temp = root;
-	while (temp != NULL && temp->value != value) {
-		if (value == temp->value) {
-			std::cout << std::endl << "Found! " << temp->value;
-			if (temp->left == NULL) {
-				std::cout << "NULL";
-			}
-			else {
-				std::cout << temp->left->value;
-			}
-			std::cout << " ";
-			if (temp->right == NULL) {
-				std::cout << "NULL";
-			}
-			else {
-				std::cout << temp->right->value;
-			}
-			std::cout << std::endl;
-			return;
-		}
-		if (value < temp->value) {
-			temp = temp->left;
-		}
-		else {
-			temp = temp->right;
-		}
-	}
-	std::cout << std::endl << "Haven't found " << value << std::endl;
-}
 
 template <class T>
 binTree<T>::binTree() {
-	this->root = NULL;
-	this->treeSize = 0;
+	this->test_begin = NULL;
 }
+
 template <class T>
 binTree<T>::~binTree() {
-	deleteLog(this->root);
+	deleteLog(this->test_begin);
 }
+
 template <class T>
-void binTree<T>::deleteLog(struct node* node) {
-	struct node* temp1 = node;
-	struct node* temp2 = NULL;
+void binTree<T>::deleteLog(Node* node) {
+	Node* temp1 = node;
+	Node* temp2 = NULL;
 	while (temp1 != NULL) {
 
-		if (temp1->left != NULL) {
-			struct node* temp2 = temp1->left;
+		if (temp1->next_left != NULL) {
+			Node* temp2 = temp1->next_left;
 		}
 		deleteBranch(temp1);
 		temp1 = temp2;
@@ -88,92 +83,110 @@ void binTree<T>::deleteLog(struct node* node) {
 }
 
 template <class T>
-void binTree<T>::deleteBranch(struct node* node) {
+void binTree<T>::deleteBranch(Node* node) {
 	if (node != NULL) {
-		deleteBranch(node->right);
+		deleteBranch(node->next_right);
 	}
 	delete node;
 }
 
 template <class T>
-void binTree<T>::push_s(T val, int shift) {
-	if (this->root == NULL) {
-		this->begin = val;
-		this->end = val;
+void binTree<T>::push_question(T value) {
+	if (this->test_begin == NULL) {
+		nodeAdd(value);
+		return;
 	}
-	if (val < this->begin) {
-		this->begin = val;
-		struct node* temp = this->root;
-		while (temp->left != NULL) {
-			temp = temp->left;
+	Node* temp1 = this->test_begin;
+	if (!(value.type)) {
+		while (temp1->next_left != NULL) {
+			temp1 = temp1->next_left;
 		}
-		node_add(&(temp->left), val, temp->depth + 1);
+		nodeAdd(value, NULL, &temp1);
 		return;
 	}
-	if (val > this->end) {
-		this->end = val;
-		struct node* temp = this->root;
-		while (temp->right != NULL) {
-			temp = temp->right;
+	if (temp1->next_right == NULL) {
+		nodeAdd(value, &temp1);
+		return;
+	}
+	Node* temp2 = this->test_begin;
+	temp1 = temp1->next_right;
+	temp2 = temp2->next_left;
+
+	while (temp1->value.type != value.type && temp1->next_right != NULL) {
+		temp1 = temp1->next_right;
+		temp2 = temp2->next_right;
+		if (temp1->value.type != value.type && temp1->next_right == NULL) {
+			break;
 		}
-		node_add(&(temp->right), val, temp->depth + 1, temp->shift + 1);
-		return;
 	}
-	if (this->root == NULL) {
-		node_add(&(this->root), val);
-		return;
+	if (temp1->value.type != value.type && temp1->next_right == NULL) {
+		nodeAdd(value, &temp1);
 	}
-	push(&(this->root->left), &(this->root), val, shift);
+	while (temp1->next_left != NULL) {
+		temp1 = temp1->next_left;
+		temp2 = temp2->next_left;
+	}
+	nodeAdd(value, &temp2, &temp1);
+	return;
 }
 
 template <class T>
-void binTree<T>::push(struct node** node_left, struct node** prev, T value, int depth, int shift) {
-
-	if (*node_left == NULL && prev == NULL) {
-		std::cout << std::endl << "Sorry! Unexpected error" << std::endl;
+void binTree<T>::nodeAdd(T val, Node** prev_left, Node** prev_right) {
+	if (prev_left == NULL && prev_right == NULL) {
+		Node* temp = new Node(val);
+		this->test_begin = temp;
 		return;
 	}
-	if ((*node_left)->right == NULL) {
-		node_add(&((*node_left)->right), value, depth + 1, shift + 1);
-		(*prev)->right->left = (*node_left)->right;
-		return;
+	Node* temp = new Node(val, prev_left, prev_right);
+	if (prev_left != NULL) {
+		if (*prev_left != NULL) {
+			(*prev_left)->next_right = temp;
+		}
 	}
-	if ((*node_left) == NULL && ((*prev)->right != NULL)) {
-		std::cout << std::endl << "Unexpected error: node is NULL" << std::endl;
-		return;
+	if (prev_right != NULL) {
+		if (*prev_right != NULL) {
+			(*prev_right)->next_left = temp;
+		}
 	}
-
-
-	if (value <= (*node_left)->value) {
-		push((&(*node_left)->left), node_left, value);
-	}
-	if (value > (*node_left)->value) {
-		push((&(*node_left)->right), node_left, value, (*node_left)->depth + 1, (*node_left)->shift + 1);
-	}
-}
-template <class T>
-void binTree<T>::node_add(struct node** node, T val, int depth, int shift) {
-	struct node* temp = new struct node;
-	temp->value = val;
-	temp->left = NULL;
-	temp->right = NULL;
-	temp->depth = depth;
-	temp->shift = shift;
-	*node = temp;
-	this->treeSize++;
 }
 
 template <class T>
 void binTree<T>::log() {
-	std::cout << std::endl << "Size: " << this->treeSize << std::endl << "Begin = " << this->begin << ", End = " << this->end << std::endl;
-	struct node* temp1 = root;
+
+	Node* temp1 = this->test_begin;
+
 	while (temp1 != NULL) {
-		struct node* temp2 = temp1;
+
+		Node* temp2 = temp1;
+
 		while (temp2 != NULL) {
 			std::cout << " " << temp2->value;
-			temp2 = temp2->right;
+			temp2 = temp2->next_right;
 		}
-		temp1 = temp1->left;
+
+		temp1 = temp1->next_left;
 		std::cout << std::endl;
 	}
+}
+
+template <class T>
+void binTree<T>::circle() {
+	Node* temp = this->test_begin;
+	std::cout << temp->value;
+	while (temp->next_left != NULL) {
+		temp = temp->next_left;
+	}
+	std::cout << temp->value;
+	while (temp->next_right != NULL) {
+		temp = temp->next_right;
+	}
+	std::cout << temp->value;
+	while (temp->prev_right != NULL) {
+		temp = temp->prev_right;
+	}
+	std::cout << temp->value;
+	while (temp->prev_left != NULL) {
+		temp = temp->prev_left;
+	}
+	std::cout << temp->value;
 }
