@@ -84,7 +84,7 @@ void mbti_test(List<q_mbti> list, User& user){
 
 	choice = 0;
 	bool flg = false;
-	stack<int> answ;
+	Stack<int> answ;
 	for (List<q_mbti>::Iterator it = list.begin(); it != list.end(); it++) {
 		if (flg) {
 			it--;

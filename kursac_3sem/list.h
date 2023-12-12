@@ -9,8 +9,8 @@ class ListIterator {
 
 public:
 	ListIterator(PointerType ptr)
-		:m_Ptr(ptr){}
-	ListIterator& operator++(){
+		:m_Ptr(ptr) {}
+	ListIterator& operator++() {
 		m_Ptr = m_Ptr->next;
 		return *this;
 	}
@@ -111,7 +111,7 @@ void List<T>::push(T value) {
 	Node* temp = this->head;
 	while (temp->next != NULL)
 		temp = temp->next;
-	
+
 	temp->next = node;
 	node->prev = temp;
 	this->tail = node;

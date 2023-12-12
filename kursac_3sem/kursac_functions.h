@@ -1,7 +1,7 @@
 #pragma once
 #include "user.h"
 #include "List.h"
-#include "stack.h"
+#include "Stack.h"
 using namespace std;
 #define CONSOLE_WIDTH 120
 #define NEWLINE std::cout << std::endl;

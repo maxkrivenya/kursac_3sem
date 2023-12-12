@@ -2,10 +2,56 @@
 #include <iostream>
 #include <iomanip>
 
+template <typename Tree>
+class TreeIterator {
+	using NodeType = typename Tree::NodeType;
+	using PointerType = NodeType*;
+	using ReferenceType = NodeType&;
+
+public:
+	TreeIterator(PointerType ptr)
+		:m_Ptr(ptr) {}
+
+	TreeIterator& operator+() {
+		m_Ptr = m_Ptr->next_left;
+		return *this;
+	}
+	TreeIterator& operator++() {
+		m_Ptr = m_Ptr->next_right;
+		return *this;
+	}
+	TreeIterator& operator-() {
+		m_Ptr = m_Ptr->prev_left;
+		return *this;
+	}
+	TreeIterator& operator--() {
+		m_Ptr = m_Ptr->prev_right;
+		return *this;
+	}
+	PointerType operator->() {
+		return m_Ptr;
+	}
+	ReferenceType operator*() {
+		return *m_Ptr;
+	}
+	bool operator==(const TreeIterator& other) {
+		return (m_Ptr == other.m_Ptr);
+	}
+	bool operator!=(const TreeIterator& other) {
+		return (m_Ptr != other.m_Ptr);
+	}
+private:
+	PointerType m_Ptr;
+};
+
+
+
 template <class T>
 class binTree {
 	class Node {
 		friend class binTree;
+		template <class T>
+		friend class TreeIterator;
 	protected:
 		Node* next_left;
 		Node* next_right;
@@ -53,9 +99,19 @@ public:
 	void deleteLog(Node* node);
 	void deleteBranch(Node* node);
 	void circle();
-private:
+	//private:
 	Node* test_begin;
 	Node* test_end;
+public:
+	using ValueType = T;
+	using NodeType = class Node;
+	using Iterator = TreeIterator<binTree<T>>;
+	Iterator begin() {
+		return Iterator(test_begin);
+	}
+	Iterator end() {
+		return Iterator(test_end->next_left);
+	}
 };
 
 template <class T>
@@ -97,11 +153,12 @@ void binTree<T>::push_question(T value) {
 		return;
 	}
 	Node* temp1 = this->test_begin;
-	if (!(value.type)) {
+	if (!(value.category)) {
 		while (temp1->next_left != NULL) {
 			temp1 = temp1->next_left;
 		}
 		nodeAdd(value, NULL, &temp1);
+		this->test_end = this->test_end->next_left;
 		return;
 	}
 	if (temp1->next_right == NULL) {
@@ -112,14 +169,14 @@ void binTree<T>::push_question(T value) {
 	temp1 = temp1->next_right;
 	temp2 = temp2->next_left;
 
-	while (temp1->value.type != value.type && temp1->next_right != NULL) {
+	while (temp1->value.category != value.category && temp1->next_right != NULL) {
 		temp1 = temp1->next_right;
 		temp2 = temp2->next_right;
-		if (temp1->value.type != value.type && temp1->next_right == NULL) {
+		if (temp1->value.category != value.category && temp1->next_right == NULL) {
 			break;
 		}
 	}
-	if (temp1->value.type != value.type && temp1->next_right == NULL) {
+	if (temp1->value.category != value.category && temp1->next_right == NULL) {
 		nodeAdd(value, &temp1);
 	}
 	while (temp1->next_left != NULL) {
@@ -135,6 +192,7 @@ void binTree<T>::nodeAdd(T val, Node** prev_left, Node** prev_right) {
 	if (prev_left == NULL && prev_right == NULL) {
 		Node* temp = new Node(val);
 		this->test_begin = temp;
+		this->test_end = temp;
 		return;
 	}
 	Node* temp = new Node(val, prev_left, prev_right);

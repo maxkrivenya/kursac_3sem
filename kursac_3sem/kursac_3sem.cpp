@@ -2,8 +2,9 @@
 #include "stroki.h"
 #include "user.h"
 #include "Question.h"
-#include "stack.h"
+#include "Stack.h"
 #include "List.h"
+#include "tree.h"
 #include "kursac_functions.h"
 #include <fstream>
 #define n 80
