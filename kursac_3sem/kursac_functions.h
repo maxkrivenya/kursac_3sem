@@ -2,6 +2,7 @@
 #include "user.h"
 #include "List.h"
 #include "Stack.h"
+#include <string>
 using namespace std;
 #define CONSOLE_WIDTH 120
 #define NEWLINE std::cout << std::endl;
@@ -10,3 +11,4 @@ void q_header(int curr);
 void mbti_test(List<q_mbti>, User& user);
 void REPEAT(char c, int amt);
 void SKIP(int amt);
+string nthWord(string, int);

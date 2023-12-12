@@ -1,5 +1,7 @@
 #include "user.h"
 #include "question.h"
+#include "kursac_functions.h"
+
 using namespace std;
 
 void User::upd_mbti(int val, q_mbti data){
@@ -53,28 +55,22 @@ void User::save() {
 	if (!old_fptr) { std::cout << "\nError open users\n"; return; }
 	if (!new_fptr) { std::cout << "\nError open users2\n"; return; }
 
-	str temp{ 80 };
-	str temp2{ 80 };
+	string temp;
+	string temp2;
 
 	do {
 		
-		old_fptr.getline(temp.string, 70);
-		if (!temp[0]) {
-			old_fptr.getline(temp.string, 70);
-		}
-		
-		temp2 = temp.nthWord();
-
-		if (!strcmp(temp2.string, this->name)) {
+		getline(old_fptr, temp);
+		temp2 = nthWord(temp, 1);
+		if (temp2 == this->name) {
 			break;
 		}
-
 		new_fptr << temp << endl;
 	} while (!(old_fptr.eof()));
 
 	new_fptr << this->name << " " << this->pass << " " << this->id << " " << (*this);
 	while (!(old_fptr.eof())) {
-		old_fptr.getline(temp.string, 70);
+		getline(old_fptr, temp);
 		new_fptr << endl << temp ;
 		if (old_fptr.eof())
 			break;
@@ -87,55 +83,43 @@ void User::save() {
 	rename("shit.txt", "users2.txt");
 }
 
-User& User::auth() {
-	str login{ N };
-	str password{ N };
-	str login_s;
-	str password_s;
-	str temp{ 80 };
-	int newid = 0;
-	int hui = 0;
-	int i = 3;
+void User::auth() {
+	string login;
+	string password;
+	string login_s;
+	string password_s;
+	string temp;
+	string id;
 	do{
 		cout << endl << "Login: ";
-		cin >> login.string;
-		login = login.nthWord();
+		cin >> login;
 
 		ifstream fptr{ "users.txt" };
 		if (!fptr) {
 			cout << endl << "ERROR: file not open in user::auth";
-			User u{ login, login };
-			return u;
+			return;
 		}
 
 		do {
-			newid = 0;
-			fptr.getline(temp.string, 40);
-			login_s = temp.nthWord(1);
-			password_s = temp.nthWord(2);
-			for (i = 0; !isdigit(temp[i]) && i < temp.len; i++);
-			int j = 3;
-			for (; j >= 0 && i < temp.len && isdigit(temp[i]); j--, i++) {
-				hui = temp[i] - '0';
-				for(int k = j; k > 0; k--)
-					hui *= 10;
-				newid += hui;
-			}
-
+			getline(fptr, temp);
+			login_s = nthWord(temp, 1);
+			password_s = nthWord(temp, 2);
+			id = nthWord(temp, 3);
 			if (login == login_s) {
 				do {
 					cout << endl << "Password: ";
-					cin >> password.string;
+					cin >> password;
 					if (password == password_s) {
 						fptr.close();
-						User u{ login_s, password_s, newid };
+						this->name = login_s;
+						this->pass = password_s;
+						this->id = id;
 						system("CLS");
-						return u;
+						return;
 					}
 				}while(1);
 			}
 		} while (!fptr.eof());
 		fptr.close();
-		i--;
-	}while (i);
+	}while (1);
 }

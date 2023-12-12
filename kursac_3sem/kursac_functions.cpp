@@ -1,6 +1,7 @@
 #include "kursac_functions.h"
 #include "List.h"
 #include <fstream>
+#include <string>
 
 User& Register() {
 	ifstream fptr{ "users.txt" };
@@ -9,15 +10,15 @@ User& Register() {
 		exit(1);
 	}
 	int str_amt = 0;
-	str login{ N };
-	str password{ N };
-	str password2{ N };
+	string login;
+	string password;
+	string password2;
 	int id;
 	bool male;
-	str temp{ 80 };
+	string temp;
 
 	for (; !fptr.eof(); str_amt++) {
-		fptr.getline(temp.string, 79);
+		getline(fptr, temp);
 	}
 	id = 1111 + (str_amt / 2);
 	NEWLINE;
@@ -26,20 +27,17 @@ User& Register() {
 	fptr.close();
 	fstream fptr2{ "users.txt", std::ios::app };
 	std::cout << std::endl << "Login: ";
-	cin >> login.string;
-	login = login.nthWord();
+	cin >> login;
 	NEWLINE;
 	std::cout << "Are you male or female? (0/1): ";
 	cin >> male;
 	do {
 		NEWLINE;
 		std::cout << "Password: ";
-		cin >> password.string;
-		password = password.nthWord();
+		cin >> password;
 		NEWLINE;
 		std::cout << "Repeat password: ";
-		cin >> password2.string;
-		password2 = password2.nthWord();
+		cin >> password2;
 
 		if (!(password == password2)) {
 			NEWLINE;
@@ -105,7 +103,7 @@ void mbti_test(List<q_mbti> list, User& user){
 		if (!choice) {
 			flg = true;    
 			if (curr > 1 || !(answ.isEmpty())) {
-				user.upd_mbti(answ.pop(), (*it).value.getType());
+				user.upd_mbti(answ.pop(), (*it).value);
 			}
 			curr--;
 			if (curr < 1) {
@@ -119,7 +117,7 @@ void mbti_test(List<q_mbti> list, User& user){
 		else {
 			choice -= 3;
 			answ.push((-1) * choice);
-			user.upd_mbti(choice, (*it).value.getType());
+			user.upd_mbti(choice, (*it).value);
 		}
 	}
 
@@ -153,4 +151,29 @@ void REPEAT(char c, int amt) {
 
 void SKIP(int amt) {
 	std::cout << setw(amt);
+}
+
+string nthWord(string that, int n) {
+	string temp;
+	int i = 0;
+	int j = 0;
+
+	for (int k = 1; k < n; k++) {
+		while (that[i] == ' ' && i < that.length()) {
+			i++;
+		}
+		while (that[i] != ' ' && i < that.length()) {
+			i++;
+		}
+	}
+
+	while (that[i] == ' ' && i < that.length()) {
+		i++;
+	}
+	while (that[i] != ' ' && i < that.length()) {
+		temp.push_back(that[i]);
+		i++;
+	}
+	return temp;
+
 }

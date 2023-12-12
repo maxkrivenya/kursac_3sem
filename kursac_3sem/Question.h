@@ -1,20 +1,21 @@
 #pragma once
-#include "stroki.h"
+#include <string>
 #include "list.h"
+
+using namespace std;
 
 class Question {
 	template <class shit>
 	friend class ListIterator;
 public:
-	Question(str data) {
+	Question(string data) {
 		this->data = data;
 	}
 	~Question() {};
 	void sout();
 	friend ostream& operator<<(ostream& os, Question& q);
 protected:
-	str data;
-	int answer;
+	string data;
 };
 
 
@@ -23,12 +24,12 @@ class q_mbti : public Question {
 protected:
 	int type;
 public:
-	q_mbti(int type = 0, str data = {1, "\n"}) :Question(data) {
+	q_mbti(int type = 1, string data = "Hello World!") :Question(data) {
 		this->type = type;
 	}
 	~q_mbti() {};
 	void sout() {
-		std::cout << std::endl << this->data << std::endl;
+		cout << endl << this->data << endl;
 	}
 	int getType() {
 		return this->type;
@@ -39,7 +40,7 @@ class q_shmishek : public q_mbti {
 	float value_multiplier_male;
 	float value_multiplier_female;
 public:
-	q_shmishek(int type = 0, str data = { 1, "\n" }, float v1=  0, float v2 = 0) :q_mbti(type, data) {
+	q_shmishek(int type, string data, float v1 =  1, float v2 = 1) :q_mbti(type, data) {
 		this->value_multiplier_female = v2;
 		this->value_multiplier_male = v1;
 	}
@@ -49,11 +50,11 @@ public:
 
 class q_driver : public q_mbti {
 	template <class T>
-	friend class binTree;
+	friend class Tree;
 protected:
 	int answer;
 public:
-	q_driver(int type = 0, str data = { 1, "\n" }, int answer = 0) :q_mbti(type, data) {
+	q_driver(int type, string data, int answer) :q_mbti(type, data) {
 		this->answer = answer;
 	}
 	~q_driver() {};

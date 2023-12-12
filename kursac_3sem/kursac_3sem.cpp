@@ -1,5 +1,5 @@
 #include "test.h"
-#include "stroki.h"
+#include <string>
 #include "user.h"
 #include "Question.h"
 #include "Stack.h"
@@ -10,23 +10,25 @@
 #define n 80
 using namespace std;
 int main() {
-	User max = max.auth(); 
+	User max;
+	max.auth();
 	ifstream fptr("data.txt");
 	List<q_mbti> list;
 	int flg = 0;
-	char* x = new char[n];
-	char* y = new char[6];
-	fptr.getline(y, 5);
+	string x;
+	int y;
+	getline(fptr, x);
 	do {
-		fptr.getline(y, 5);
-		fptr.getline(x, n);
-		str temp{ static_cast<int>(strlen(x)), x };
-		if (temp[0] != '\0') {
-			list.push(q_mbti(atoi(y), temp));
+		fptr >> y;
+		if (!fptr.eof()) {
+			getline(fptr, x);
+			getline(fptr, x);
+			if (x[0] != '\0') {
+				list.push(q_mbti(y, x));
+			}
 		}
 	} while (!fptr.eof());
 	mbti_test(list, max);
 	fptr.close();
-	delete[] x;
 	return 0;
 }

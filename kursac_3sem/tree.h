@@ -47,9 +47,9 @@ private:
 
 
 template <class T>
-class binTree {
+class Tree {
 	class Node {
-		friend class binTree;
+		friend class Tree;
 		template <class T>
 		friend class TreeIterator;
 	protected:
@@ -88,8 +88,8 @@ class binTree {
 		~Node() { ; }
 	};
 public:
-	binTree();
-	~binTree();
+	Tree();
+	~Tree();
 
 	void nodeAdd(T value, Node** prev_left = NULL, Node** prev_right = NULL);
 
@@ -105,7 +105,7 @@ public:
 public:
 	using ValueType = T;
 	using NodeType = class Node;
-	using Iterator = TreeIterator<binTree<T>>;
+	using Iterator = TreeIterator<Tree<T>>;
 	Iterator begin() {
 		return Iterator(test_begin);
 	}
@@ -115,17 +115,17 @@ public:
 };
 
 template <class T>
-binTree<T>::binTree() {
+Tree<T>::Tree() {
 	this->test_begin = NULL;
 }
 
 template <class T>
-binTree<T>::~binTree() {
+Tree<T>::~Tree() {
 	deleteLog(this->test_begin);
 }
 
 template <class T>
-void binTree<T>::deleteLog(Node* node) {
+void Tree<T>::deleteLog(Node* node) {
 	Node* temp1 = node;
 	Node* temp2 = NULL;
 	while (temp1 != NULL) {
@@ -139,7 +139,7 @@ void binTree<T>::deleteLog(Node* node) {
 }
 
 template <class T>
-void binTree<T>::deleteBranch(Node* node) {
+void Tree<T>::deleteBranch(Node* node) {
 	if (node != NULL) {
 		deleteBranch(node->next_right);
 	}
@@ -147,7 +147,7 @@ void binTree<T>::deleteBranch(Node* node) {
 }
 
 template <class T>
-void binTree<T>::push_question(T value) {
+void Tree<T>::push_question(T value) {
 	if (this->test_begin == NULL) {
 		nodeAdd(value);
 		return;
@@ -188,7 +188,7 @@ void binTree<T>::push_question(T value) {
 }
 
 template <class T>
-void binTree<T>::nodeAdd(T val, Node** prev_left, Node** prev_right) {
+void Tree<T>::nodeAdd(T val, Node** prev_left, Node** prev_right) {
 	if (prev_left == NULL && prev_right == NULL) {
 		Node* temp = new Node(val);
 		this->test_begin = temp;
@@ -209,7 +209,7 @@ void binTree<T>::nodeAdd(T val, Node** prev_left, Node** prev_right) {
 }
 
 template <class T>
-void binTree<T>::log() {
+void Tree<T>::log() {
 
 	Node* temp1 = this->test_begin;
 
@@ -228,7 +228,7 @@ void binTree<T>::log() {
 }
 
 template <class T>
-void binTree<T>::circle() {
+void Tree<T>::circle() {
 	Node* temp = this->test_begin;
 	std::cout << temp->value;
 	while (temp->next_left != NULL) {

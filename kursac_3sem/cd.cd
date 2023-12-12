@@ -1,80 +1,120 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="ListIterator&lt;List&gt;" Collapsed="true">
-    <Position X="18.5" Y="3.5" Width="1.5" />
+  <Class Name="ListIterator&lt;List&gt;">
+    <Position X="17.5" Y="8.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAABAAAAAQAAAAQAEAAwAAAAEAAAAAAAAgAAAAAAA=</HashCode>
       <FileName>list.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="List&lt;T&gt;" Collapsed="true">
-    <Position X="18.5" Y="2.5" Width="1.5" />
+  <Class Name="List&lt;T&gt;">
+    <Position X="17.5" Y="1.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="List&lt;T&gt;::Node">
+        <TypeIdentifier>
+          <NewMemberFileName>list.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
     <TypeIdentifier>
       <HashCode>AAAAAEACgAAAAAAAgAAAAAAQAAAAAAAAAAAIAAAAQgI=</HashCode>
       <FileName>list.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Question" Collapsed="true">
-    <Position X="10.25" Y="2.5" Width="1.5" />
+  <Class Name="Question">
+    <Position X="10" Y="1.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAEAAAQAAIAAAI=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAEAAAQAAIAAAA=</HashCode>
       <FileName>question.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="q_mbti" Collapsed="true">
-    <Position X="10.25" Y="3.75" Width="1.5" />
+  <Class Name="q_mbti">
+    <Position X="10" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAACAAAAAAAAAAAAAAAEQABAAAAAAAAAAAAABA=</HashCode>
       <FileName>question.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="q_shmishek" Collapsed="true">
-    <Position X="9" Y="5.25" Width="1.5" />
+  <Class Name="q_shmishek">
+    <Position X="8.75" Y="7" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAgCAAAAAAAAAAAAAQAAAAAAAAAAAgAAAAAAAAA=</HashCode>
       <FileName>question.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="q_driver" Collapsed="true">
-    <Position X="11.25" Y="5.25" Width="1.5" />
+  <Class Name="q_driver">
+    <Position X="11" Y="7" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAEAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
       <FileName>question.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="StackIterator&lt;Stack&gt;" Collapsed="true">
-    <Position X="16.75" Y="3.5" Width="1.5" />
+  <Class Name="StackIterator&lt;Stack&gt;">
+    <Position X="15.75" Y="8.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AACAABAAAAAAAAAAQAAAAwAAAAAAAAAAAAAgAAAAAAA=</HashCode>
       <FileName>stack.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Stack&lt;T&gt;" Collapsed="true">
-    <Position X="16.75" Y="2.5" Width="1.5" />
+  <Class Name="Stack&lt;T&gt;">
+    <Position X="15.75" Y="1.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="Stack&lt;T&gt;::Node">
+        <TypeIdentifier>
+          <NewMemberFileName>stack.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
     <TypeIdentifier>
       <HashCode>AAAAAAACAAAAAAAACAAgAIAQgAAAAAAABAAIAAAAQgA=</HashCode>
       <FileName>stack.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="TreeIterator&lt;Tree&gt;" Collapsed="true">
-    <Position X="15" Y="3.5" Width="1.5" />
+  <Class Name="TreeIterator&lt;Tree&gt;">
+    <Position X="19.25" Y="8.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAABAAAAAAAAAAQBEAAwAAAAAAAAAAAAAgAAAAAAA=</HashCode>
       <FileName>tree.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="binTree&lt;T&gt;" Collapsed="true">
-    <Position X="15" Y="2.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AgAAAAICAAACABAAAAAACAAQAABAAAAAAAACQAAABAA=</HashCode>
-      <FileName>tree.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="User" Collapsed="true">
-    <Position X="13.25" Y="2.5" Width="1.5" />
+  <Class Name="User">
+    <Position X="13.5" Y="1.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Struct Name="User::mbti">
+        <TypeIdentifier>
+          <NewMemberFileName>user.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+    </NestedTypes>
     <TypeIdentifier>
       <HashCode>AgABAAAKAACAAAEFAAAEAAAAAAAFAAAAEAAAAAAAAgA=</HashCode>
       <FileName>user.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Tree&lt;T&gt;">
+    <Position X="19.25" Y="1.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="Tree&lt;T&gt;::Node">
+        <TypeIdentifier>
+          <NewMemberFileName>tree.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AgAAAAICAACCAAAAAAAACAAQAABAAAAAAAACQAAABAA=</HashCode>
+      <FileName>tree.h</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

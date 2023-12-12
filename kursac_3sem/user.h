@@ -2,7 +2,7 @@
 #include <iostream>
 #include <iomanip>
 #include <fstream>
-#include "stroki.h"
+#include <string>
 #include "Question.h"
 #include "test.h"
 #include "list.h"
@@ -10,8 +10,6 @@
 #define shmish_size 8
 #define id_size 5
 class User {
-	friend class str;
-	friend class Test;
 	struct mbti {
 		int ei;
 		int sn;
@@ -19,9 +17,9 @@ class User {
 		int	jp;
 	};
 public:
-	User(str& name, str& pass, int id = 0, bool female = false) {
-		strcpy_s(this->name, N - 1, name.string);
-		strcpy_s(this->pass, N - 1, pass.string);
+	User(string name = "Guest", string pass = " ", int id = 0, bool female = false) {
+		this->name = name;
+		this->pass = pass;
 		this->id = id;
 		this->male = female;
 		this->type.ei = 0;
@@ -29,16 +27,26 @@ public:
 		this->type.tf = 0;
 		this->type.jp = 0;
 	}
+	User(const User& u) {
+		this->name = u.name;
+		this->pass = u.pass;
+		this->id = u.id;
+		this->male = u.male;
+		//this->type.ei = u.type.ei;
+		//this->type.sn = u.type.sn;
+		//this->type.tf = u.type.tf;
+		//this->type.jp = u.type.jp;
+	}
 	~User() {;}
 	friend ostream& operator<<(ostream& os, const User& user);
 	friend void mbti_test(List<q_mbti> list, User& user);
 	bool male = 0;
 	void save();
-	User& auth();
+	void auth();
 protected:
-	char name[N];
-	char pass[N];
-	int id;	
+	string name;
+	string pass;
+	string id;	
 	struct mbti type;
 	int ket[ket_size];
 	int shmish[shmish_size];
