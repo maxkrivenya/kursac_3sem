@@ -52,6 +52,7 @@
     <Text Include="data.txt" />
     <Text Include="users.txt" />
     <Text Include="users2.txt" />
+    <Text Include="driver.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="CD.CD" />

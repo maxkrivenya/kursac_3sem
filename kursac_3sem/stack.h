@@ -1,12 +1,14 @@
 #pragma once
 #include <iostream>
 #include <iomanip>
+#include <fstream>
 using namespace std;
 template <typename Stack>
 class StackIterator {
 	using NodeType = typename Stack::NodeType;
 	using PointerType = NodeType*;
 	using ReferenceType = NodeType&;
+	friend class q_driver;
 
 public:
 	StackIterator(PointerType ptr)
@@ -39,7 +41,8 @@ private:
 template <class T> class Stack {
 	template <class T>
 	friend class StackIterator;
-
+	friend class q_driver;
+	friend ostream& operator<<(ostream& os, q_driver& that);
 	using ValueType = T;
 	using NodeType = class Node;
 	using Iterator = StackIterator<Stack<T>>;

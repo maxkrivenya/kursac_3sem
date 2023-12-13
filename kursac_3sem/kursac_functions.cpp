@@ -1,8 +1,7 @@
 #include "kursac_functions.h"
-#include "List.h"
 #include <fstream>
 #include <string>
-
+#define MISTAKES_AMT 3
 User& Register() {
 	ifstream fptr{ "users.txt" };
 	if (!fptr) {
@@ -73,7 +72,7 @@ void mbti_test(List<q_mbti> list, User& user){
 		<< std::endl << "\tTo return to the previous question, input 0."
 		<< std::endl << "\tPlease input a number from 1 to 5 as your answer depending on how much you agree with the statement."
 		<< std::endl << "To start the Test, input any number." << std::endl 
-		<< std::endl << "To return, input a negative number." << std::endl
+		<< std::endl << "To return now, input a negative number." << std::endl
 		<< std::endl << "Your answer:  ";
 	cin >> choice;
 	if (choice < 0) {
@@ -144,6 +143,18 @@ void q_header(int curr) {
 	REPEAT('-', 15);
 }
 
+void q_header(string text) {
+	system("CLS");
+	SKIP(CONSOLE_WIDTH / 2 - 11);
+	REPEAT('-', 15);
+	NEWLINE;
+	SKIP(CONSOLE_WIDTH / 2);
+	std::cout << "| " << text << " |";
+	NEWLINE;
+	SKIP(CONSOLE_WIDTH / 2 - 11);
+	REPEAT('-', 15);
+}
+
 void REPEAT(char c, int amt) {
 	for (int i = 0; i < amt; i++)
 		std::cout << c;
@@ -176,4 +187,85 @@ string nthWord(string that, int n) {
 	}
 	return temp;
 
+}
+
+void DriverTest(Tree<q_driver> test, User& user) {
+	if (test.isEmpty()) {
+		NEWLINE;
+		std::cout << "Empty List.";
+		NEWLINE;
+		return;
+	}
+	int mistakes = 0;
+	int curr = 0;
+	int choice = 0;
+	std::cout << std::endl << "Welcome to the Driver Test."
+		<< std::endl << "The rules are simple:"
+		<< std::endl << "\tYou will be shown a statement and several answer options."
+		<< std::endl << "\tTo quit the test, input a negative number."
+		<< std::endl << "\tTo answer, input a number corresponding to the answer option you think is correct."
+		<< std::endl << "\tYou can make " << MISTAKES_AMT << " mistakes" << std::endl
+		<< std::endl << "To start the Test, input any number." << std::endl
+		<< std::endl << "To return now, input a negative number." << std::endl
+		<< std::endl << "Your answer:  ";
+	cin >> choice;
+	if (choice < 0) {
+		return;
+	}
+	for (Tree<q_driver>::Iterator it = test.begin(); it != test.end(); +it) {
+		curr++;
+		choice = 0;
+		q_header(curr);
+		cout << (*it).value;
+		NEWLINE;
+		std::cout << "Your answer:  ";
+		std::cin >> choice;
+		if (choice < 0) {
+			return;
+		}
+		if (choice != (*it).value.getAnswer()) {
+			mistakes++;
+			if (mistakes == MISTAKES_AMT) {
+				user.upd_driver(false);
+				user.save();
+				SKIP(CONSOLE_WIDTH / 2 + 10);
+				cout << "YOU FAILED" << endl;
+				return;
+			}
+			cout << mistakes;
+			question_failed(it, user, mistakes);
+			cout << mistakes;
+		}
+	}
+	user.upd_driver(true);
+	user.save();
+	SKIP(CONSOLE_WIDTH / 2 + 10);
+	cout << "YOU WON!" << endl;
+	return;
+}
+
+void question_failed(Tree<q_driver>::Iterator it, User& user, int& mistakes_amt) {
+	int cat = (*it).value.getType();
+	do {
+		+it;
+	} while ((*it).value.getType() != cat && (*it).IsntNull(4) != NULL);
+	if ((*it).value.getType() != cat) {
+		cout << "type error!";
+		exit(1);
+	}
+	q_header("Bonus round!");
+	cout << (*it).value;
+	NEWLINE;
+	std::cout << "Your answer:  ";
+	std::cin >> cat;
+	if (cat < 0) {
+		return;
+	}
+	if (cat != (*it).value.getAnswer()) {
+		mistakes_amt++;
+	}
+	while ((*it).value.getType() != 0) {
+		-it;
+	}
+	return;
 }

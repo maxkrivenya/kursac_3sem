@@ -1,7 +1,5 @@
 #include "user.h"
-#include "question.h"
 #include "kursac_functions.h"
-
 using namespace std;
 
 void User::upd_mbti(int val, q_mbti data){
@@ -14,9 +12,6 @@ void User::upd_mbti(int val, q_mbti data){
 	}
 }
 
-void User::upd_kettel(int answer, q_mbti q) {
-	this->ket[q.type] += answer;
-}
 
 ostream& operator<<(ostream& o, const User& user) {
 	if (user.type.ei >= 0) {
@@ -68,7 +63,10 @@ void User::save() {
 		new_fptr << temp << endl;
 	} while (!(old_fptr.eof()));
 
-	new_fptr << setw(4) << this->id << " " << setw(10) << this->name << " " << setw(10) << this->pass << " " << (*this);
+	new_fptr << this->id << " " << setw(10) << this->name << " " << setw(10) << this->pass << "   ";
+	if (this->type.ei != 0) { new_fptr << (*this); }
+	else { new_fptr << this->curr_mbti; }
+
 	while (!(old_fptr.eof())) {
 		getline(old_fptr, temp);
 		new_fptr << endl << temp ;
@@ -130,4 +128,8 @@ void User::auth() {
 		} while (!fptr.eof());
 		fptr.close();
 	}while (1);
+}
+
+void User::upd_driver(bool that) {
+	this->driver = that;
 }

@@ -3,19 +3,31 @@
 #include <iomanip>
 #include <fstream>
 #include <string>
-#include "Question.h"
-#include "test.h"
 #include "list.h"
+#include "Question.h"
+using namespace std;
+
 #define ket_size 19
 #define shmish_size 8
 #define id_size 5
 class User {
+	friend class q_driver;
 	struct mbti {
 		int ei;
 		int sn;
 		int tf;
 		int	jp;
 	};
+protected:
+	string name;
+	string pass;
+	string id;
+	string curr_mbti;
+	bool male = 0;
+	struct mbti type;
+	int ket[ket_size];
+	int shmish[shmish_size];
+	bool driver;
 public:
 	User(string name = "Guest", string pass = " ", int id = 0, bool female = false) {
 		this->name = name;
@@ -26,30 +38,26 @@ public:
 		this->type.sn = 0;
 		this->type.tf = 0;
 		this->type.jp = 0;
+		this->driver = false;
 	}
-	User(const User& u) {
-		this->name = u.name;
-		this->pass = u.pass;
-		this->id = u.id;
-		this->male = u.male;
-		//this->type.ei = u.type.ei;
-		//this->type.sn = u.type.sn;
-		//this->type.tf = u.type.tf;
-		//this->type.jp = u.type.jp;
+	User(const User& that) {
+		this->name = that.name;
+		this->pass = that.pass;
+		this->id = that.id;
+		this->male = that.male;
+		this->driver = that.driver;
+		this->type.ei = that.type.ei;
+		this->type.sn = that.type.sn;
+		this->type.tf = that.type.tf;
+		this->type.jp = that.type.jp;
 	}
 	~User() {;}
 	friend ostream& operator<<(ostream& os, const User& user);
+	template<class q_mbti>
 	friend void mbti_test(List<q_mbti> list, User& user);
-	bool male = 0;
 	void save();
 	void auth();
-protected:
-	string name;
-	string pass;
-	string id;	
-	struct mbti type;
-	int ket[ket_size];
-	int shmish[shmish_size];
 	void upd_mbti(int, q_mbti q);
-	void upd_kettel(int, q_mbti q);
+	void upd_driver(bool);
+	//void upd_kettel(int, q_mbti q);
 };

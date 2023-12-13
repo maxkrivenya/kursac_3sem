@@ -1,7 +1,6 @@
 ﻿#pragma once
 #include <iostream>
 #include <iomanip>
-
 template <typename Tree>
 class TreeIterator {
 	using NodeType = typename Tree::NodeType;
@@ -61,6 +60,15 @@ class Tree {
 		int depth;
 		int shift;
 		T value;
+		bool IsntNull(int a) {
+			switch (a) {
+			case 1: return (this->prev_left == NULL);
+			case 2: return (this->prev_right == NULL);
+			case 3: return (this->next_left == NULL);
+			case 4: return (this->next_right == NULL);
+			default:exit(1);
+			}
+		}
 		//public:
 		Node(T value, Node** prev_left = NULL, Node** prev_right = NULL) {
 			this->value = value;
@@ -86,6 +94,10 @@ class Tree {
 			}
 		}
 		~Node() { ; }
+		friend ostream& operator<<(ostream& os, Node that) {
+			os << that.value;
+			return os;
+		}
 	};
 public:
 	Tree();
@@ -99,7 +111,8 @@ public:
 	void deleteLog(Node* node);
 	void deleteBranch(Node* node);
 	void circle();
-	//private:
+	bool isEmpty();
+protected:
 	Node* test_begin;
 	Node* test_end;
 public:
@@ -110,18 +123,27 @@ public:
 		return Iterator(test_begin);
 	}
 	Iterator end() {
-		return Iterator(test_end->next_left);
+		return Iterator(test_end);
 	}
 };
 
 template <class T>
 Tree<T>::Tree() {
 	this->test_begin = NULL;
+	this->test_end = NULL;
 }
 
 template <class T>
 Tree<T>::~Tree() {
-	deleteLog(this->test_begin);
+	//deleteLog(this->test_begin);
+}
+
+template <class T>
+bool Tree<T> :: isEmpty() {
+	if (this->test_begin == NULL) {
+		return true;
+	}
+	return false;
 }
 
 template <class T>
@@ -153,7 +175,7 @@ void Tree<T>::push_question(T value) {
 		return;
 	}
 	Node* temp1 = this->test_begin;
-	if (!(value.category)) {
+	if (!(value.getType())) {
 		while (temp1->next_left != NULL) {
 			temp1 = temp1->next_left;
 		}
@@ -169,14 +191,14 @@ void Tree<T>::push_question(T value) {
 	temp1 = temp1->next_right;
 	temp2 = temp2->next_left;
 
-	while (temp1->value.category != value.category && temp1->next_right != NULL) {
+	while (temp1->value.getType() != value.getType() && temp1->next_right != NULL) {
 		temp1 = temp1->next_right;
 		temp2 = temp2->next_right;
-		if (temp1->value.category != value.category && temp1->next_right == NULL) {
+		if (temp1->value.getType() != value.getType() && temp1->next_right == NULL) {
 			break;
 		}
 	}
-	if (temp1->value.category != value.category && temp1->next_right == NULL) {
+	if (temp1->value.getType() != value.getType() && temp1->next_right == NULL) {
 		nodeAdd(value, &temp1);
 	}
 	while (temp1->next_left != NULL) {

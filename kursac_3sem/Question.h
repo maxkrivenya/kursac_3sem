@@ -1,7 +1,8 @@
 #pragma once
 #include <string>
-#include "list.h"
-
+#include "List.h"
+#include "Stack.h"
+#include "tree.h"
 using namespace std;
 
 class Question {
@@ -49,13 +50,19 @@ public:
 
 
 class q_driver : public q_mbti {
-	template <class T>
-	friend class Tree;
+	friend class user;
 protected:
 	int answer;
+	List<string> choices;
 public:
-	q_driver(int type, string data, int answer) :q_mbti(type, data) {
-		this->answer = answer;
-	}
+	q_driver() :q_mbti() {};
 	~q_driver() {};
+	int getAnswer() {
+		return this->answer;
+	}
+	string getData() {
+		return this->data;
+	}
+	friend istream& operator>>(istream& os, q_driver& that);
+	friend ostream& operator<<(ostream& os, q_driver& q);
 };

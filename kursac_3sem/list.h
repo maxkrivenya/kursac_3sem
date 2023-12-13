@@ -1,6 +1,5 @@
 #pragma once
 #include <iostream>
-
 template <typename List>
 class ListIterator {
 	using NodeType = typename List::NodeType;
@@ -74,6 +73,7 @@ public:
 	using Iterator = ListIterator<List<T>>;
 	List() {
 		this->head = NULL;
+		this->tail = NULL;
 	}
 	virtual ~List() { ; }
 	void push(T value);
@@ -102,9 +102,9 @@ void List<T>::out() {
 template <class T>
 void List<T>::push(T value) {
 	Node* node = new Node(value);
-
-	if (this->head == NULL) {
+	if (this->head == NULL) {	
 		this->head = node;
+		this->tail = node;
 		return;
 	}
 
