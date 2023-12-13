@@ -62,13 +62,13 @@ void User::save() {
 		
 		getline(old_fptr, temp);
 		temp2 = nthWord(temp, 1);
-		if (temp2 == this->name) {
+		if (temp2 == this->id) {
 			break;
 		}
 		new_fptr << temp << endl;
 	} while (!(old_fptr.eof()));
 
-	new_fptr << this->name << " " << this->pass << " " << this->id << " " << (*this);
+	new_fptr << setw(4) << this->id << " " << setw(10) << this->name << " " << setw(10) << this->pass << " " << (*this);
 	while (!(old_fptr.eof())) {
 		getline(old_fptr, temp);
 		new_fptr << endl << temp ;
@@ -90,6 +90,7 @@ void User::auth() {
 	string password_s;
 	string temp;
 	string id;
+	int attempts = 4;
 	do{
 		cout << endl << "Login: ";
 		cin >> login;
@@ -102,11 +103,15 @@ void User::auth() {
 
 		do {
 			getline(fptr, temp);
-			login_s = nthWord(temp, 1);
-			password_s = nthWord(temp, 2);
-			id = nthWord(temp, 3);
-			if (login == login_s) {
+			id			= nthWord(temp, 1);
+			login_s		= nthWord(temp, 2);
+			password_s	= nthWord(temp, 3);
+
+			if (login == login_s || login == id) {
 				do {
+					if (attempts != 4) {
+						cout << endl << "Attempts left: " << attempts;
+					}
 					cout << endl << "Password: ";
 					cin >> password;
 					if (password == password_s) {
@@ -117,7 +122,10 @@ void User::auth() {
 						system("CLS");
 						return;
 					}
-				}while(1);
+					attempts--;
+				}while(attempts);
+				cout << endl << "Too many attempts." << endl;
+				exit(1);
 			}
 		} while (!fptr.eof());
 		fptr.close();
