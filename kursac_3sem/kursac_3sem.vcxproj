@@ -127,12 +127,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ContainerException.cpp" />
+    <ClCompile Include="Exception.cpp" />
+    <ClCompile Include="InputException.cpp" />
+    <ClCompile Include="Interface.cpp" />
     <ClCompile Include="kursac_3sem.cpp" />
     <ClCompile Include="kursac_functions.cpp" />
     <ClCompile Include="question.cpp" />
     <ClCompile Include="user.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ContainerExceptions.h" />
+    <ClInclude Include="Exception.h" />
+    <ClInclude Include="InputException.h" />
+    <ClInclude Include="Interface.h" />
     <ClInclude Include="kursac_functions.h" />
     <ClInclude Include="list.h" />
     <ClInclude Include="question.h" />

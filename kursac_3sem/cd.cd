@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="ListIterator&lt;List&gt;">
-    <Position X="17.5" Y="8.75" Width="1.5" />
+    <Position X="14.75" Y="9.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAABAAAAAQAAAAQAEAAwAAAAEAAAAAAAAgAAAAAAA=</HashCode>
       <FileName>list.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="List&lt;T&gt;">
-    <Position X="17.5" Y="1.25" Width="1.5" />
+    <Position X="14.75" Y="1.75" Width="1.5" />
     <Compartments>
       <Compartment Name="Nested Types" Collapsed="false" />
     </Compartments>
@@ -25,42 +25,42 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Question">
-    <Position X="10" Y="1.25" Width="1.5" />
+    <Position X="9.5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAEAAAQAAIAAAA=</HashCode>
       <FileName>question.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="q_mbti">
-    <Position X="10" Y="4" Width="1.5" />
+    <Position X="9.5" Y="4.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAACAAAAAAAAAAAAAAAEQABAAAAAAAAAAAAABA=</HashCode>
       <FileName>question.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="q_shmishek">
-    <Position X="8.75" Y="7" Width="1.5" />
+    <Position X="8.25" Y="7.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAgCAAAAAAAAAAAAAQAAAAAAAAAAAgAAAAAAAAA=</HashCode>
       <FileName>question.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="q_driver">
-    <Position X="11" Y="7" Width="1.5" />
+    <Position X="11" Y="7.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAEAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <HashCode>AAEQAAAIAAAEAAABAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
       <FileName>question.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="StackIterator&lt;Stack&gt;">
-    <Position X="15.75" Y="8.75" Width="1.5" />
+    <Position X="13" Y="9.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AACAABAAAAAAAAAAQAAAAwAAAAAAAAAAAAAgAAAAAAA=</HashCode>
       <FileName>stack.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Stack&lt;T&gt;">
-    <Position X="15.75" Y="1.25" Width="1.5" />
+    <Position X="13" Y="1.75" Width="1.5" />
     <Compartments>
       <Compartment Name="Nested Types" Collapsed="false" />
     </Compartments>
@@ -77,31 +77,14 @@
     </TypeIdentifier>
   </Class>
   <Class Name="TreeIterator&lt;Tree&gt;">
-    <Position X="19.25" Y="8.75" Width="1.5" />
+    <Position X="16.5" Y="9.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAABAAAAAAAAAAQBEAAwAAAAAAAAAAAAAgAAAAAAA=</HashCode>
       <FileName>tree.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="User">
-    <Position X="13.5" Y="1.25" Width="1.5" />
-    <Compartments>
-      <Compartment Name="Nested Types" Collapsed="false" />
-    </Compartments>
-    <NestedTypes>
-      <Struct Name="User::mbti">
-        <TypeIdentifier>
-          <NewMemberFileName>user.h</NewMemberFileName>
-        </TypeIdentifier>
-      </Struct>
-    </NestedTypes>
-    <TypeIdentifier>
-      <HashCode>AgABAAAKAACAAAEFAAAEAAAAAAAFAAAAEAAAAAAAAgA=</HashCode>
-      <FileName>user.h</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="Tree&lt;T&gt;">
-    <Position X="19.25" Y="1.25" Width="1.5" />
+    <Position X="16.5" Y="1.75" Width="1.5" />
     <Compartments>
       <Compartment Name="Nested Types" Collapsed="false" />
     </Compartments>
@@ -113,8 +96,46 @@
       </Class>
     </NestedTypes>
     <TypeIdentifier>
-      <HashCode>AgAAAAICAACCAAAAAAAACAAQAABAAAAAAAACQAAABAA=</HashCode>
+      <HashCode>AgAAAAICAACCAAAAAAAACAAQAABAAAAAAAACQAAARAA=</HashCode>
       <FileName>tree.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="User">
+    <Position X="5.75" Y="1.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Struct Name="User::mbti">
+        <TypeIdentifier>
+          <NewMemberFileName>user.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AgABAAAIAACAAgEFAAAEAACAAAAFAAAgEAAAAAAAAgA=</HashCode>
+      <FileName>user.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ContainerException">
+    <Position X="3.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>ContainerExceptions.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Exception">
+    <Position X="2.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAACA=</HashCode>
+      <FileName>Exception.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InputException">
+    <Position X="1.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>InputException.h</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

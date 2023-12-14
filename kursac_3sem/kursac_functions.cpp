@@ -1,4 +1,4 @@
-#include "kursac_functions.h"
+#include "Interface.h"
 #include <fstream>
 #include <string>
 #define MISTAKES_AMT 3
@@ -58,28 +58,15 @@ User& Register() {
 
 void mbti_test(List<q_mbti> list, User& user){
 	if (list.isEmpty()) {
-		NEWLINE;
-		std::cout << "Empty List.";
-		NEWLINE;
+		ContainerException exc;
+		exc.Show();
 		return;
 	}
-	int curr = 0;
-	int choice = 0;
-	std::cout << std::endl << "Welcome to the MBTI Test."
-		<< std::endl << "The rules are simple:"
-		<< std::endl << "\tYou will be shown a statement."
-		<< std::endl << "\tTo quit the test, input a negative number."
-		<< std::endl << "\tTo return to the previous question, input 0."
-		<< std::endl << "\tPlease input a number from 1 to 5 as your answer depending on how much you agree with the statement."
-		<< std::endl << "To start the Test, input any number." << std::endl 
-		<< std::endl << "To return now, input a negative number." << std::endl
-		<< std::endl << "Your answer:  ";
-	cin >> choice;
-	if (choice < 0) {
-		return;
-	}
+	Interface huh;
+	if (!huh.MBTItestMenu()) { return; }
 
-	choice = 0;
+	int choice = 0;
+	int curr = 0;
 	bool flg = false;
 	Stack<int> answ;
 	for (List<q_mbti>::Iterator it = list.begin(); it != list.end(); it++) {
@@ -91,7 +78,7 @@ void mbti_test(List<q_mbti> list, User& user){
 		}
 		flg = false;
 		choice = 0;
-		q_header(curr);
+		huh.q_header(curr);
 		(*it).value.sout();
 		NEWLINE;
 		std::cout << "Your answer:  ";
@@ -131,29 +118,29 @@ void mbti_test(List<q_mbti> list, User& user){
 	}
 }
 
-void q_header(int curr) {
-	system("CLS");
-	SKIP(CONSOLE_WIDTH / 2 - 11);
-	REPEAT('-', 15);
-	NEWLINE;
-	SKIP(CONSOLE_WIDTH / 2);
-	std::cout << "| Question #" << curr << " |";
-	NEWLINE;
-	SKIP(CONSOLE_WIDTH / 2 - 11);
-	REPEAT('-', 15);
-}
-
-void q_header(string text) {
-	system("CLS");
-	SKIP(CONSOLE_WIDTH / 2 - 11);
-	REPEAT('-', 15);
-	NEWLINE;
-	SKIP(CONSOLE_WIDTH / 2);
-	std::cout << "| " << text << " |";
-	NEWLINE;
-	SKIP(CONSOLE_WIDTH / 2 - 11);
-	REPEAT('-', 15);
-}
+//void q_header(int curr) {
+//	system("CLS");
+//	SKIP(CONSOLE_WIDTH / 2 - 11);
+//	REPEAT('-', 15);
+//	NEWLINE;
+//	SKIP(CONSOLE_WIDTH / 2);
+//	std::cout << "| Question #" << curr << " |";
+//	NEWLINE;
+//	SKIP(CONSOLE_WIDTH / 2 - 11);
+//	REPEAT('-', 15);
+//}
+//
+//void q_header(string text) {
+//	system("CLS");
+//	SKIP(CONSOLE_WIDTH / 2 - 11);
+//	REPEAT('-', 15);
+//	NEWLINE;
+//	SKIP(CONSOLE_WIDTH / 2);
+//	std::cout << "| " << text << " |";
+//	NEWLINE;
+//	SKIP(CONSOLE_WIDTH / 2 - 11);
+//	REPEAT('-', 15);
+//}
 
 void REPEAT(char c, int amt) {
 	for (int i = 0; i < amt; i++)
@@ -190,6 +177,7 @@ string nthWord(string that, int n) {
 }
 
 void DriverTest(Tree<q_driver> test, User& user) {
+	Interface huh;
 	if (test.isEmpty()) {
 		NEWLINE;
 		std::cout << "Empty List.";
@@ -215,7 +203,7 @@ void DriverTest(Tree<q_driver> test, User& user) {
 	for (Tree<q_driver>::Iterator it = test.begin(); it != test.end(); +it) {
 		curr++;
 		choice = 0;
-		q_header(curr);
+		huh.q_header(curr);
 		cout << (*it).value;
 		NEWLINE;
 		std::cout << "Your answer:  ";
@@ -245,6 +233,7 @@ void DriverTest(Tree<q_driver> test, User& user) {
 }
 
 void question_failed(Tree<q_driver>::Iterator it, User& user, int& mistakes_amt) {
+	Interface huh;
 	int cat = (*it).value.getType();
 	do {
 		+it;
@@ -253,7 +242,7 @@ void question_failed(Tree<q_driver>::Iterator it, User& user, int& mistakes_amt)
 		cout << "type error!";
 		exit(1);
 	}
-	q_header("Bonus round!");
+	huh.q_header("Bonus round!");
 	cout << (*it).value;
 	NEWLINE;
 	std::cout << "Your answer:  ";

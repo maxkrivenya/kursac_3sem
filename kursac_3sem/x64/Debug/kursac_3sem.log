@@ -1,2 +1,5 @@
-﻿  kursac_3sem.cpp
+﻿  kursac_functions.cpp
+  user.cpp
+  Generating Code...
+D:\github\kursac_3sem\kursac_3sem\kursac_3sem\kursac_functions.cpp(56): warning C4172: returning address of local variable or temporary: new_user
   kursac_3sem.vcxproj -> D:\github\kursac_3sem\kursac_3sem\kursac_3sem\x64\Debug\kursac_3sem.exe

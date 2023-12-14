@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include "ContainerExceptions.h"
 template <typename List>
 class ListIterator {
 	using NodeType = typename List::NodeType;
