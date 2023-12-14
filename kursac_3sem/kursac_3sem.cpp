@@ -25,6 +25,7 @@ using namespace std;
 int main() {
 	User max;
 	max.auth();
-	mbtiTest(max);
+	//mbtiTest(max);
+	sportsTest(max);
 	return 0;
 }

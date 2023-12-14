@@ -47,6 +47,7 @@ bool Interface::DriverTestMenu() {
 		NEWLINE;
 		SKIP(CONSOLE_WIDTH / 2 - 11);
 		REPEAT('-', 15);
+		NEWLINE;
 	}
 
 	void Interface::q_header(string text) {
@@ -59,6 +60,7 @@ bool Interface::DriverTestMenu() {
 		NEWLINE;
 		SKIP(CONSOLE_WIDTH / 2 - 11);
 		REPEAT('-', 15);
+		NEWLINE;
 	}
 
 

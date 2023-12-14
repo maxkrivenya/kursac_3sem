@@ -1,7 +1,7 @@
 #pragma once
 #include "Question.h"
 
-class qMbti : public Question {
+class qMbti : public virtual Question {
 	friend class User;
 protected:
 	int type;

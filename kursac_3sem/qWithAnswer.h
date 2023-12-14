@@ -1,7 +1,7 @@
 #pragma once
 #include "Question.h"
 
-class qWithAnswer : public Question {
+class qWithAnswer : public virtual Question {
 protected:
 	int answer;
 public:

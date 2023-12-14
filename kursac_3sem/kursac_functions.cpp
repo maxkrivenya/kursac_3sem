@@ -57,7 +57,7 @@ User& Register() {
 	return new_user;
 }
 
-List<qMbti> testInit(const char* fileName) {
+List<qMbti> mbtiTestInit(const char* fileName) {
 	ifstream fptr(fileName);
 	if (!fptr) {
 		FileException oops;
@@ -83,7 +83,7 @@ List<qMbti> testInit(const char* fileName) {
 }
 
 void mbtiTest(User& user){
-	List<qMbti> list = testInit();
+	List<qMbti> list = mbtiTestInit();
 	if (list.isEmpty()) {
 		FileException exc;
 		exc.show();
@@ -246,3 +246,129 @@ void question_failed(Tree<qDriver>::Iterator it, User& user, int& mistakes_amt) 
 	}
 	return;
 }
+
+List<qSport> sportsTestInit(const char* fileName) {
+	ifstream fptr(fileName);
+	if (!fptr) {
+		FileException oops;
+		oops.show();
+		return {};
+	}
+	List<qSport> list;
+	string x;
+	int goal = 0;
+	int record = 0;
+	getline(fptr, x);
+	do {
+		fptr >> goal;
+		fptr >> record;
+		if (!fptr.eof()) {
+			fptr.ignore(1);
+			getline(fptr, x);
+			if (x[0] != '\0') {
+				list.push(qSport(x, goal, record));
+			}
+		}
+	} while (!fptr.eof());
+	fptr.close();
+	return list;
+}
+
+void sportsTest(User& user) {
+	List<qSport> list = sportsTestInit();
+	if (list.isEmpty()) {
+		FileException exc;
+		exc.show();
+		return;
+	}
+	Interface huh;
+	if (!huh.MBTItestMenu()) { return; }
+
+	float result = 0;
+	float best = 0;
+	int choice = 0;
+	int curr = 0;
+	bool flg = false;
+	Stack<int> answ;
+
+	for (List<qSport>::Iterator it = list.begin(); it != list.end(); it++) {
+		if (flg) {
+			it--;
+		}
+		else {
+			curr++;
+		}
+		flg = false;
+		choice = 0;
+		huh.q_header(curr);
+		cout << (*it).value;
+		NEWLINE;
+		std::cout << "Your answer:  ";
+		std::cin >> choice;
+		if (choice < 0) {
+			return;
+		}
+		if (!choice) {
+			flg = true;
+			if (curr > 1 || !(answ.isEmpty())) {
+				best += answ.pop();
+			}
+			curr--;
+			if (curr < 1) {
+				curr = 1;
+			}
+			if (it != list.begin()) {
+				it--;
+			}
+
+		}
+		else {
+			if (user.getGender() == 'f') {
+				choice /= (*it).value.value_multiplier_female;
+			}
+			else {
+				choice /= (*it).value.value_multiplier_male;
+			}
+			answ.push((-1) * choice);
+			if(choice > (*it).value.getAnswer()){
+				result++;
+				if (choice > (*it).value.getRecord()) {
+					result++;
+				}
+			}
+			best += 2;
+		}
+	}
+
+	system("CLS");
+	std::cout << "Your result is: " << result << endl;
+	std::cout << "The best is: " << best << endl;
+	huh.eot();
+	bool wannasave = true;
+	std::cin >> wannasave;
+	if (wannasave) {
+		user.setSports(result);
+		user.save();
+	}
+}
+
+/*
+template <class T>
+List<T> testInit(const char* filename){
+	ifstream fptr(fileName);
+	if (!fptr) {
+		FileException oops;
+		oops.show();
+		return {};
+	}
+	List<T> list;
+	string x;
+	do {
+		T temp;
+		fptr >> temp;
+		list.push(temp);
+	} while (!fptr.eof());
+	fptr.close();
+	return list;
+}
+*/
