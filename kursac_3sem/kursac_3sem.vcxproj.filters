@@ -54,6 +54,9 @@
     <ClCompile Include="qWithAnswer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="FileException.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Question.h">
@@ -104,12 +107,16 @@
     <ClInclude Include="qWithAnswer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="FileException.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="data.txt" />
+    <Text Include="mbtiQuestions.txt" />
     <Text Include="users.txt" />
     <Text Include="users2.txt" />
     <Text Include="driver.txt" />
+    <Text Include="sports.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="CD.CD" />

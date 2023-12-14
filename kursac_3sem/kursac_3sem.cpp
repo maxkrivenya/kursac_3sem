@@ -25,23 +25,6 @@ using namespace std;
 int main() {
 	User max;
 	max.auth();
-	ifstream fptr("data.txt");
-	List<qMbti> list;
-	int flg = 0;
-	string x;
-	int y;
-	getline(fptr, x);
-	do {
-		fptr >> y;
-		if (!fptr.eof()) {
-			getline(fptr, x);
-			getline(fptr, x);
-			if (x[0] != '\0') {
-				list.push(qMbti(y, x));
-			}
-		}
-	} while (!fptr.eof());
-	mbti_test(list, max);
-	fptr.close();
+	mbtiTest(max);
 	return 0;
 }

@@ -1,0 +1,8 @@
+50 100
+How many push-ups can you do?
+10 20
+How many pull-ups can you do?
+40 80
+How many sit-ups can you do in 60 seconds?
+200	300
+How far can you jump from-stand?

@@ -1,4 +1,5 @@
 #include "Interface.h"
+#include "FileException.h"
 #include <fstream>
 #include <string>
 #define MISTAKES_AMT 3
@@ -56,10 +57,36 @@ User& Register() {
 	return new_user;
 }
 
-void mbti_test(List<qMbti> list, User& user){
+List<qMbti> testInit(const char* fileName) {
+	ifstream fptr(fileName);
+	if (!fptr) {
+		FileException oops;
+		oops.show();
+		return {};
+	}
+	List<qMbti> list;
+	string x;
+	int y;
+	getline(fptr, x);
+	do {
+		fptr >> y;
+		if (!fptr.eof()) {
+			getline(fptr, x);
+			getline(fptr, x);
+			if (x[0] != '\0') {
+				list.push(qMbti(y, x));
+			}
+		}
+	} while (!fptr.eof());
+	fptr.close();
+	return list;
+}
+
+void mbtiTest(User& user){
+	List<qMbti> list = testInit();
 	if (list.isEmpty()) {
-		ContainerException exc;
-		exc.Show();
+		FileException exc;
+		exc.show();
 		return;
 	}
 	Interface huh;
@@ -109,9 +136,8 @@ void mbti_test(List<qMbti> list, User& user){
 
 	system("CLS");
 	std::cout << "Your result is: " << user;
+	huh.eot();
 	bool wannasave = true;
-	NEWLINE;
-	std::cout << "If you don't want to save, type 0: ";
 	std::cin >> wannasave;
 	if (wannasave) {
 		user.save();
@@ -155,8 +181,8 @@ string nthWord(string that, int n) {
 void DriverTest(Tree<qDriver> test, User& user) {
 	Interface huh;
 	if (test.isEmpty()) {
-		ContainerException empty;
-		empty.Show();
+		FileException empty;
+		empty.show();
 	}
 	int mistakes = 0;
 	int curr = 0;
@@ -176,7 +202,7 @@ void DriverTest(Tree<qDriver> test, User& user) {
 		if (choice != (*it).value.getAnswer()) {
 			mistakes++;
 			if (mistakes == MISTAKES_AMT) {
-				user.upd_driver(false);
+				user.setDriver(false);
 				user.save();
 				SKIP(CONSOLE_WIDTH / 2 + 10);
 				cout << "YOU FAILED" << endl;
@@ -187,7 +213,7 @@ void DriverTest(Tree<qDriver> test, User& user) {
 			cout << mistakes;
 		}
 	}
-	user.upd_driver(true);
+	user.setDriver(true);
 	user.save();
 	SKIP(CONSOLE_WIDTH / 2 + 10);
 	cout << "YOU WON!" << endl;

@@ -1,11 +1,10 @@
 #include "ContainerExceptions.h"
 
-ContainerException::ContainerException(string text)
-{
+ContainerException::ContainerException(string text){
 	this->message = text;
 }
 
-void ContainerException::Show()
+void ContainerException::show()
 {
 	cout << endl << message << endl;
 }

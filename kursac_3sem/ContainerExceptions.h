@@ -1,10 +1,10 @@
 #pragma once
 #include "Exception.h"
 
-class ContainerException : public Exception	// класс исключений в контейнере
+class ContainerException : public Exception	
 {
 public:
-	ContainerException(string text = "Container is empty, try again");	// исключение в контейнере
-	void Show() override;	// вывод
+	ContainerException(string text = "Container is empty, oopsie");
+	void show() override;	
 };
 

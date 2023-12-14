@@ -60,3 +60,9 @@ bool Interface::DriverTestMenu() {
 		SKIP(CONSOLE_WIDTH / 2 - 11);
 		REPEAT('-', 15);
 	}
+
+
+	void Interface::eot() {
+		NEWLINE;
+		std::cout << "If you don't want to save, type 0: ";
+	}

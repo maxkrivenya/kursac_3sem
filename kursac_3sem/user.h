@@ -3,15 +3,12 @@
 #include <iomanip>
 #include <fstream>
 #include <string>
-
 #include "qSport.h"
 #include "QDriver.h"
+#define shmish_size 8
 
 using namespace std;
 
-#define ket_size 19
-#define shmish_size 8
-#define id_size 5
 class User {
 	friend class qDriver;
 	struct mbti {
@@ -20,22 +17,23 @@ class User {
 		int tf;
 		int	jp;
 	};
-protected:
-	string name;
+private:
 	string pass;
+protected:
 	string id;
+	string name;
+	char gender;
 	string curr_mbti;
-	bool male = 0;
 	struct mbti type;
-	int ket[ket_size];
 	int shmish[shmish_size];
 	bool driver;
+	float sports;
 public:
-	User(string name = "Guest", string pass = " ", int id = 0, bool female = false) {
+	User(string name = "Guest", string pass = " ", int id = 0, char gender = 'm') {
 		this->name = name;
 		this->pass = pass;
 		this->id = id;
-		this->male = female;
+		this->gender = gender;
 		this->type.ei = 0;
 		this->type.sn = 0;
 		this->type.tf = 0;
@@ -46,7 +44,7 @@ public:
 		this->name = that.name;
 		this->pass = that.pass;
 		this->id = that.id;
-		this->male = that.male;
+		this->gender = that.gender;
 		this->driver = that.driver;
 		this->type.ei = that.type.ei;
 		this->type.sn = that.type.sn;
@@ -56,10 +54,25 @@ public:
 	~User() {;}
 	friend ostream& operator<<(ostream& os, const User& user);
 	template<class qMbti>
-	friend void mbti_test(List<qMbti> list, User& user);
+	friend void mbtiTest(List<qMbti> list, User& user);
 	void save();
 	void auth();
-	void updMbti(int, qMbti q);
-	void upd_driver(bool);
-	//void upd_kettel(int, qMbti q);
+	void updMbti(int type, qMbti q);
+	void updShmishek(int type, qShmishek q);
+
+	void setId(string newId);
+	void setName(string newName);
+	void setPassword(string newPass);
+	void setGender(char newGender);
+	void setMbti(string newMbti);
+	void setDriver(bool newDriver);
+	void setSports(float newSports);
+
+
+	string getId();
+	string getName();
+	char getGender();
+	string getMbti();
+	bool getDriver();
+	float getSports();
 };

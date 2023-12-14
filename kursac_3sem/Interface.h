@@ -12,6 +12,7 @@ public:
 	bool DriverTestMenu();
 	void q_header(int curr);
 	void q_header(string text);
+	void eot();
 	//void InterfaceMenu();
 	//void StartMenuUser();
 	//void StartMenuAdmin();

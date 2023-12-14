@@ -3,6 +3,48 @@
 
 using namespace std;
 
+void User::setId(string newId) {
+	this->id = newId;
+}
+void User::setName(string newName) {
+	this->name = newName;
+}
+void User::setPassword(string newPass) {
+	this->pass = newPass;
+}
+void User::setGender(char newGender) {
+	this->gender = newGender;
+}
+void User::setMbti(string newMbti) {
+	this->curr_mbti = newMbti;
+}
+void User::setDriver(bool newDriver) {
+	this->driver = newDriver;
+}
+void User::setSports(float newSports) {
+	this->sports = newSports;
+}
+
+string User::getId() {
+	return this->id;
+}
+string User::getName() {
+	return this->name;
+}
+char   User::getGender() {
+	return this->gender;
+}
+string User::getMbti() {
+	return this->curr_mbti;
+}
+bool   User::getDriver() {
+	return this->driver;
+}
+float  User::getSports() {
+	return this->sports;
+}
+
+
 void User::updMbti(int val, qMbti data){
 	switch (data.type) {
 	case 1: {this->type.ei += val; break; }
@@ -129,8 +171,4 @@ void User::auth() {
 		} while (!fptr.eof());
 		fptr.close();
 	}while (1);
-}
-
-void User::upd_driver(bool that) {
-	this->driver = that;
 }

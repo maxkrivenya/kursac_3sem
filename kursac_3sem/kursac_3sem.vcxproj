@@ -129,6 +129,7 @@
   <ItemGroup>
     <ClCompile Include="ContainerException.cpp" />
     <ClCompile Include="Exception.cpp" />
+    <ClCompile Include="FileException.cpp" />
     <ClCompile Include="InputException.cpp" />
     <ClCompile Include="Interface.cpp" />
     <ClCompile Include="kursac_3sem.cpp" />
@@ -145,6 +146,7 @@
     <ClInclude Include="ContainerExceptions.h" />
     <ClInclude Include="Containers.h" />
     <ClInclude Include="Exception.h" />
+    <ClInclude Include="FileException.h" />
     <ClInclude Include="InputException.h" />
     <ClInclude Include="Interface.h" />
     <ClInclude Include="kursac_functions.h" />
@@ -160,8 +162,9 @@
     <ClInclude Include="user.h" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="data.txt" />
+    <Text Include="mbtiQuestions.txt" />
     <Text Include="driver.txt" />
+    <Text Include="sports.txt" />
     <Text Include="users.txt" />
     <Text Include="users2.txt" />
   </ItemGroup>

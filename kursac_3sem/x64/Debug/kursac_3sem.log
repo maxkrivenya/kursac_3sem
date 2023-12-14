@@ -1,13 +1,7 @@
 ﻿  Interface.cpp
-  QDriver.cpp
-  QMbti.cpp
-  QShmishek.cpp
-  Question.cpp
   kursac_3sem.cpp
   kursac_functions.cpp
-  qSport.cpp
-  qWithAnswer.cpp
   user.cpp
   Generating Code...
-D:\github\kursac_3sem\kursac_3sem\kursac_3sem\kursac_functions.cpp(56): warning C4172: returning address of local variable or temporary: new_user
+D:\github\kursac_3sem\kursac_3sem\kursac_3sem\kursac_functions.cpp(57): warning C4172: returning address of local variable or temporary: new_user
   kursac_3sem.vcxproj -> D:\github\kursac_3sem\kursac_3sem\kursac_3sem\x64\Debug\kursac_3sem.exe

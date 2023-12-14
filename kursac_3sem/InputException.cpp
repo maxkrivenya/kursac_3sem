@@ -1,11 +1,11 @@
 #include "InputException.h"
 
-InputException::InputException(string text)	// исключения при вводе
+InputException::InputException(string text)
 {
 	this->message = text;
 }
 
-void InputException::Show()	// вывод
+void InputException::show()
 {
 	cout << endl << message << endl;
 }
