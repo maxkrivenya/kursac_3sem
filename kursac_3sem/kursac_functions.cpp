@@ -118,30 +118,6 @@ void mbti_test(List<q_mbti> list, User& user){
 	}
 }
 
-//void q_header(int curr) {
-//	system("CLS");
-//	SKIP(CONSOLE_WIDTH / 2 - 11);
-//	REPEAT('-', 15);
-//	NEWLINE;
-//	SKIP(CONSOLE_WIDTH / 2);
-//	std::cout << "| Question #" << curr << " |";
-//	NEWLINE;
-//	SKIP(CONSOLE_WIDTH / 2 - 11);
-//	REPEAT('-', 15);
-//}
-//
-//void q_header(string text) {
-//	system("CLS");
-//	SKIP(CONSOLE_WIDTH / 2 - 11);
-//	REPEAT('-', 15);
-//	NEWLINE;
-//	SKIP(CONSOLE_WIDTH / 2);
-//	std::cout << "| " << text << " |";
-//	NEWLINE;
-//	SKIP(CONSOLE_WIDTH / 2 - 11);
-//	REPEAT('-', 15);
-//}
-
 void REPEAT(char c, int amt) {
 	for (int i = 0; i < amt; i++)
 		std::cout << c;
@@ -179,27 +155,13 @@ string nthWord(string that, int n) {
 void DriverTest(Tree<q_driver> test, User& user) {
 	Interface huh;
 	if (test.isEmpty()) {
-		NEWLINE;
-		std::cout << "Empty List.";
-		NEWLINE;
-		return;
+		ContainerException empty;
+		empty.Show();
 	}
 	int mistakes = 0;
 	int curr = 0;
 	int choice = 0;
-	std::cout << std::endl << "Welcome to the Driver Test."
-		<< std::endl << "The rules are simple:"
-		<< std::endl << "\tYou will be shown a statement and several answer options."
-		<< std::endl << "\tTo quit the test, input a negative number."
-		<< std::endl << "\tTo answer, input a number corresponding to the answer option you think is correct."
-		<< std::endl << "\tYou can make " << MISTAKES_AMT << " mistakes" << std::endl
-		<< std::endl << "To start the Test, input any number." << std::endl
-		<< std::endl << "To return now, input a negative number." << std::endl
-		<< std::endl << "Your answer:  ";
-	cin >> choice;
-	if (choice < 0) {
-		return;
-	}
+	if (!huh.DriverTestMenu()) { return; }
 	for (Tree<q_driver>::Iterator it = test.begin(); it != test.end(); +it) {
 		curr++;
 		choice = 0;

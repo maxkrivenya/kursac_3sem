@@ -9,6 +9,7 @@ public:
 	Interface() {};
 	~Interface() {};
 	bool MBTItestMenu();
+	bool DriverTestMenu();
 	void q_header(int curr);
 	void q_header(string text);
 	//void InterfaceMenu();

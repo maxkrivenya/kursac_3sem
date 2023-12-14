@@ -1,5 +1,5 @@
 #include "Interface.h"
-
+#define MISTAKES_AMT 3
 bool Interface::MBTItestMenu() {
 	int choice = 0;
 	std::cout << std::endl << "Welcome to the MBTI Test."
@@ -17,6 +17,26 @@ bool Interface::MBTItestMenu() {
 	}
 	return 1;
 }
+
+bool Interface::DriverTestMenu() {
+	int choice = 0;
+	std::cout << std::endl << "Welcome to the Driver Test."
+		<< std::endl << "The rules are simple:"
+		<< std::endl << "\tYou will be shown a statement and several answer options."
+		<< std::endl << "\tTo quit the test, input a negative number."
+		<< std::endl << "\tTo answer, input a number corresponding to the answer option you think is correct."
+		<< std::endl << "\tYou can make " << MISTAKES_AMT << " mistakes" << std::endl
+		<< std::endl << "To start the Test, input any number." << std::endl
+		<< std::endl << "To return now, input a negative number." << std::endl
+		<< std::endl << "Your answer:  ";
+	cin >> choice;
+	if (choice <= 0) {
+		return 0;
+	}
+	return 1;
+}
+
+
 	void Interface::q_header(int curr) {
 		system("CLS");
 		SKIP(CONSOLE_WIDTH / 2 - 11);
