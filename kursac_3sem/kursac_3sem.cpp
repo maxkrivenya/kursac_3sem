@@ -9,9 +9,9 @@ using namespace std;
 //	User max;
 //	max.auth();
 //	ifstream fptr("driver.txt");
-//	Tree<q_driver> test;
+//	Tree<qDriver> test;
 //	do {
-//		q_driver temp;
+//		qDriver temp;
 //		fptr >> temp;
 //		test.push_question(temp);
 //	} while (!fptr.eof());
@@ -26,7 +26,7 @@ int main() {
 	User max;
 	max.auth();
 	ifstream fptr("data.txt");
-	List<q_mbti> list;
+	List<qMbti> list;
 	int flg = 0;
 	string x;
 	int y;
@@ -37,7 +37,7 @@ int main() {
 			getline(fptr, x);
 			getline(fptr, x);
 			if (x[0] != '\0') {
-				list.push(q_mbti(y, x));
+				list.push(qMbti(y, x));
 			}
 		}
 	} while (!fptr.eof());

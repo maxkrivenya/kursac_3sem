@@ -1,148 +1,123 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="ContainerException">
-    <Position X="8.5" Y="2.25" Width="1.5" />
+  <Class Name="ContainerException" Collapsed="true">
+    <Position X="15.75" Y="5.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAQAAAA=</HashCode>
       <FileName>ContainerExceptions.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Exception">
-    <Position X="9.75" Y="0.5" Width="1.5" />
+  <Class Name="Exception" Collapsed="true">
+    <Position X="17" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAACA=</HashCode>
       <FileName>Exception.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="InputException">
-    <Position X="10.75" Y="2.25" Width="1.5" />
+  <Class Name="InputException" Collapsed="true">
+    <Position X="18" Y="5.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
       <FileName>InputException.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Interface">
-    <Position X="10.25" Y="4.5" Width="1.5" />
+  <Class Name="Interface" Collapsed="true">
+    <Position X="20.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAABAAAAAAAAAAAABAgAAQAAAAAAAAEAAAQAAAAAA=</HashCode>
       <FileName>Interface.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ListIterator&lt;List&gt;">
-    <Position X="20" Y="9.5" Width="1.5" />
+  <Class Name="ListIterator&lt;List&gt;" Collapsed="true">
+    <Position X="24" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAABAAAAAQAAAAQAEAAwAAAAEAAAAAAAAgAAAAAAA=</HashCode>
       <FileName>list.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="List&lt;T&gt;">
-    <Position X="20" Y="1" Width="1.5" />
-    <Compartments>
-      <Compartment Name="Nested Types" Collapsed="false" />
-    </Compartments>
-    <NestedTypes>
-      <Class Name="List&lt;T&gt;::Node">
-        <TypeIdentifier>
-          <NewMemberFileName>list.h</NewMemberFileName>
-        </TypeIdentifier>
-      </Class>
-    </NestedTypes>
+  <Class Name="List&lt;T&gt;" Collapsed="true">
+    <Position X="22.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAEACgAAAAAAAgAAAAAAQAAAAAAAAAAAIAAAAQgI=</HashCode>
       <FileName>list.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Question">
-    <Position X="14.75" Y="1" Width="1.5" />
+  <Class Name="qDriver" Collapsed="true">
+    <Position X="11.75" Y="3.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAEAAAQAAIAAAA=</HashCode>
-      <FileName>question.h</FileName>
+      <HashCode>AAAAAAAAAAAEAAAAAAAAAAAAARAFAAAAAQAAAAACAAA=</HashCode>
+      <FileName>QDriver.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="q_mbti">
-    <Position X="14.75" Y="3.25" Width="1.5" />
+  <Class Name="qMbti" Collapsed="true">
+    <Position X="14" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAACAAAAAAAAAAAAAAAEQABAAAAAAAAAAAAABA=</HashCode>
-      <FileName>question.h</FileName>
+      <HashCode>gAAAAAAAAAAAAAAAAAAAAAAAARABAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>QMbti.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="q_shmishek">
-    <Position X="13.5" Y="6.25" Width="1.5" />
+  <Class Name="qShmishek" Collapsed="true">
+    <Position X="14" Y="3.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAgCAAAAAAAAAAAAAQAAAAAAAAAAAgAAAAAAAAA=</HashCode>
-      <FileName>question.h</FileName>
+      <HashCode>AQAAAAgCCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>QShmishek.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="q_driver">
-    <Position X="15.75" Y="6.25" Width="1.5" />
+  <Class Name="Question" Collapsed="true">
+    <Position X="13" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAEQAAAIAAAEAAABAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
-      <FileName>question.h</FileName>
+      <HashCode>AAEQAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAQAAIAAAA=</HashCode>
+      <FileName>Question.h</FileName>
+      <NewMemberFileName>question.h</NewMemberFileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="StackIterator&lt;Stack&gt;">
-    <Position X="18.25" Y="9.5" Width="1.5" />
+  <Class Name="StackIterator&lt;Stack&gt;" Collapsed="true">
+    <Position X="22.25" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AACAABAAAAAAAAAAQAAAAwAAAAAAAAAAAAAgAAAAAAA=</HashCode>
       <FileName>stack.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Stack&lt;T&gt;">
-    <Position X="18.25" Y="1" Width="1.5" />
-    <Compartments>
-      <Compartment Name="Nested Types" Collapsed="false" />
-    </Compartments>
-    <NestedTypes>
-      <Class Name="Stack&lt;T&gt;::Node">
-        <TypeIdentifier>
-          <NewMemberFileName>stack.h</NewMemberFileName>
-        </TypeIdentifier>
-      </Class>
-    </NestedTypes>
+  <Class Name="Stack&lt;T&gt;" Collapsed="true">
+    <Position X="20.5" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAACAAAAAAAACAAgAIAQgAAAAAAABAAIAAAAQgA=</HashCode>
       <FileName>stack.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="TreeIterator&lt;Tree&gt;">
-    <Position X="21.75" Y="9.5" Width="1.5" />
+  <Class Name="TreeIterator&lt;Tree&gt;" Collapsed="true">
+    <Position X="20.5" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAABAAAAAAAAAAQBEAAwAAAAAAAAAAAAAgAAAAAAA=</HashCode>
       <FileName>tree.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Tree&lt;T&gt;">
-    <Position X="21.75" Y="1" Width="1.5" />
-    <Compartments>
-      <Compartment Name="Nested Types" Collapsed="false" />
-    </Compartments>
-    <NestedTypes>
-      <Class Name="Tree&lt;T&gt;::Node">
-        <TypeIdentifier>
-          <NewMemberFileName>tree.h</NewMemberFileName>
-        </TypeIdentifier>
-      </Class>
-    </NestedTypes>
+  <Class Name="Tree&lt;T&gt;" Collapsed="true">
+    <Position X="24" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AgAAAAICAACCAAAAAAAACAAQAABAAAAAAAACQAAARAA=</HashCode>
       <FileName>tree.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="User">
-    <Position X="8" Y="4.5" Width="1.5" />
-    <Compartments>
-      <Compartment Name="Nested Types" Collapsed="false" />
-    </Compartments>
-    <NestedTypes>
-      <Struct Name="User::mbti">
-        <TypeIdentifier>
-          <NewMemberFileName>user.h</NewMemberFileName>
-        </TypeIdentifier>
-      </Struct>
-    </NestedTypes>
+  <Class Name="User" Collapsed="true">
+    <Position X="22.25" Y="2.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AgABAAAIAACAAgEFAAAEAACAAAAFAAAgEAAAAAAAAgA=</HashCode>
+      <HashCode>AgABAAAIAACAAgAFAAAEAACAAAIFAAAgEAAAAAAAAgA=</HashCode>
       <FileName>user.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="qSport" Collapsed="true">
+    <Position X="13" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAEAAQAAAAAAAAAAAAAAACAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>qSport.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="qWithAnswer" Collapsed="true">
+    <Position X="11.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAIAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAABAI=</HashCode>
+      <FileName>qWithAnswer.h</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

@@ -56,7 +56,7 @@ User& Register() {
 	return new_user;
 }
 
-void mbti_test(List<q_mbti> list, User& user){
+void mbti_test(List<qMbti> list, User& user){
 	if (list.isEmpty()) {
 		ContainerException exc;
 		exc.Show();
@@ -69,7 +69,7 @@ void mbti_test(List<q_mbti> list, User& user){
 	int curr = 0;
 	bool flg = false;
 	Stack<int> answ;
-	for (List<q_mbti>::Iterator it = list.begin(); it != list.end(); it++) {
+	for (List<qMbti>::Iterator it = list.begin(); it != list.end(); it++) {
 		if (flg) {
 			it--;
 		}
@@ -79,7 +79,7 @@ void mbti_test(List<q_mbti> list, User& user){
 		flg = false;
 		choice = 0;
 		huh.q_header(curr);
-		(*it).value.sout();
+		cout << (*it).value;
 		NEWLINE;
 		std::cout << "Your answer:  ";
 		std::cin >> choice;
@@ -89,7 +89,7 @@ void mbti_test(List<q_mbti> list, User& user){
 		if (!choice) {
 			flg = true;    
 			if (curr > 1 || !(answ.isEmpty())) {
-				user.upd_mbti(answ.pop(), (*it).value);
+				user.updMbti(answ.pop(), (*it).value);
 			}
 			curr--;
 			if (curr < 1) {
@@ -103,7 +103,7 @@ void mbti_test(List<q_mbti> list, User& user){
 		else {
 			choice -= 3;
 			answ.push((-1) * choice);
-			user.upd_mbti(choice, (*it).value);
+			user.updMbti(choice, (*it).value);
 		}
 	}
 
@@ -152,7 +152,7 @@ string nthWord(string that, int n) {
 
 }
 
-void DriverTest(Tree<q_driver> test, User& user) {
+void DriverTest(Tree<qDriver> test, User& user) {
 	Interface huh;
 	if (test.isEmpty()) {
 		ContainerException empty;
@@ -162,7 +162,7 @@ void DriverTest(Tree<q_driver> test, User& user) {
 	int curr = 0;
 	int choice = 0;
 	if (!huh.DriverTestMenu()) { return; }
-	for (Tree<q_driver>::Iterator it = test.begin(); it != test.end(); +it) {
+	for (Tree<qDriver>::Iterator it = test.begin(); it != test.end(); +it) {
 		curr++;
 		choice = 0;
 		huh.q_header(curr);
@@ -194,7 +194,7 @@ void DriverTest(Tree<q_driver> test, User& user) {
 	return;
 }
 
-void question_failed(Tree<q_driver>::Iterator it, User& user, int& mistakes_amt) {
+void question_failed(Tree<qDriver>::Iterator it, User& user, int& mistakes_amt) {
 	Interface huh;
 	int cat = (*it).value.getType();
 	do {

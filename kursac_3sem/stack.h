@@ -8,7 +8,7 @@ class StackIterator {
 	using NodeType = typename Stack::NodeType;
 	using PointerType = NodeType*;
 	using ReferenceType = NodeType&;
-	friend class q_driver;
+	friend class qDriver;
 
 public:
 	StackIterator(PointerType ptr)
@@ -41,15 +41,15 @@ private:
 template <class T> class Stack {
 	template <class T>
 	friend class StackIterator;
-	friend class q_driver;
-	friend ostream& operator<<(ostream& os, q_driver& that);
+	friend class qDriver;
+	friend ostream& operator<<(ostream& os, qDriver& that);
 	using ValueType = T;
 	using NodeType = class Node;
 	using Iterator = StackIterator<Stack<T>>;
 
 	class Node {
 		friend class Stack;
-		friend class q_driver;
+		friend class qDriver;
 		template <class T>
 		friend class StackIterator;
 	protected:
@@ -64,7 +64,7 @@ template <class T> class Stack {
 	};
 	Node* root;
 	Node* last;
-	friend class q_driver;
+	friend class qDriver;
 public:
 	Stack() {
 		this->root = NULL;

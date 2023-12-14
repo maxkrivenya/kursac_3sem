@@ -1,8 +1,9 @@
 #include "user.h"
 #include "kursac_functions.h"
+
 using namespace std;
 
-void User::upd_mbti(int val, q_mbti data){
+void User::updMbti(int val, qMbti data){
 	switch (data.type) {
 	case 1: {this->type.ei += val; break; }
 	case 2: {this->type.sn += val; break; }

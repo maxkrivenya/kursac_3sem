@@ -3,15 +3,17 @@
 #include <iomanip>
 #include <fstream>
 #include <string>
-#include "list.h"
-#include "Question.h"
+
+#include "qSport.h"
+#include "QDriver.h"
+
 using namespace std;
 
 #define ket_size 19
 #define shmish_size 8
 #define id_size 5
 class User {
-	friend class q_driver;
+	friend class qDriver;
 	struct mbti {
 		int ei;
 		int sn;
@@ -53,11 +55,11 @@ public:
 	}
 	~User() {;}
 	friend ostream& operator<<(ostream& os, const User& user);
-	template<class q_mbti>
-	friend void mbti_test(List<q_mbti> list, User& user);
+	template<class qMbti>
+	friend void mbti_test(List<qMbti> list, User& user);
 	void save();
 	void auth();
-	void upd_mbti(int, q_mbti q);
+	void updMbti(int, qMbti q);
 	void upd_driver(bool);
-	//void upd_kettel(int, q_mbti q);
+	//void upd_kettel(int, qMbti q);
 };

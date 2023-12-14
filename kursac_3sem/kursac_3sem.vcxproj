@@ -133,17 +133,28 @@
     <ClCompile Include="Interface.cpp" />
     <ClCompile Include="kursac_3sem.cpp" />
     <ClCompile Include="kursac_functions.cpp" />
-    <ClCompile Include="question.cpp" />
+    <ClCompile Include="QDriver.cpp" />
+    <ClCompile Include="QMbti.cpp" />
+    <ClCompile Include="QShmishek.cpp" />
+    <ClCompile Include="qSport.cpp" />
+    <ClCompile Include="Question.cpp" />
+    <ClCompile Include="qWithAnswer.cpp" />
     <ClCompile Include="user.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ContainerExceptions.h" />
+    <ClInclude Include="Containers.h" />
     <ClInclude Include="Exception.h" />
     <ClInclude Include="InputException.h" />
     <ClInclude Include="Interface.h" />
     <ClInclude Include="kursac_functions.h" />
     <ClInclude Include="list.h" />
-    <ClInclude Include="question.h" />
+    <ClInclude Include="QDriver.h" />
+    <ClInclude Include="QMbti.h" />
+    <ClInclude Include="qSport.h" />
+    <ClInclude Include="QShmishek.h" />
+    <ClInclude Include="Question.h" />
+    <ClInclude Include="qWithAnswer.h" />
     <ClInclude Include="stack.h" />
     <ClInclude Include="tree.h" />
     <ClInclude Include="user.h" />
