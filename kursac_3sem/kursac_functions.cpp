@@ -3,6 +3,7 @@
 #include <fstream>
 #include <string>
 #define MISTAKES_AMT 3
+
 User& Register() {
 	ifstream fptr{ "users.txt" };
 	if (!fptr) {
@@ -57,93 +58,6 @@ User& Register() {
 	return new_user;
 }
 
-List<qMbti> mbtiTestInit(const char* fileName) {
-	ifstream fptr(fileName);
-	if (!fptr) {
-		FileException oops;
-		oops.show();
-		return {};
-	}
-	List<qMbti> list;
-	string x;
-	int y;
-	getline(fptr, x);
-	do {
-		fptr >> y;
-		if (!fptr.eof()) {
-			getline(fptr, x);
-			getline(fptr, x);
-			if (x[0] != '\0') {
-				list.push(qMbti(y, x));
-			}
-		}
-	} while (!fptr.eof());
-	fptr.close();
-	return list;
-}
-
-void mbtiTest(User& user){
-	List<qMbti> list = mbtiTestInit();
-	if (list.isEmpty()) {
-		FileException exc;
-		exc.show();
-		return;
-	}
-	Interface huh;
-	if (!huh.MBTItestMenu()) { return; }
-
-	int choice = 0;
-	int curr = 0;
-	bool flg = false;
-	Stack<int> answ;
-	for (List<qMbti>::Iterator it = list.begin(); it != list.end(); it++) {
-		if (flg) {
-			it--;
-		}
-		else {
-			curr++;
-		}
-		flg = false;
-		choice = 0;
-		huh.q_header(curr);
-		cout << (*it).value;
-		NEWLINE;
-		std::cout << "Your answer:  ";
-		std::cin >> choice;
-		if (choice < 0) {
-			return;
-		}
-		if (!choice) {
-			flg = true;    
-			if (curr > 1 || !(answ.isEmpty())) {
-				user.updMbti(answ.pop(), (*it).value);
-			}
-			curr--;
-			if (curr < 1) {
-				curr = 1;
-			}
-			if (it != list.begin()) {
-				it--;
-			}
-			
-		}
-		else {
-			choice -= 3;
-			answ.push((-1) * choice);
-			user.updMbti(choice, (*it).value);
-		}
-	}
-
-	system("CLS");
-	std::cout << "Your result is: " << user;
-	huh.eot();
-	bool wannasave = true;
-	std::cin >> wannasave;
-	if (wannasave) {
-		user.save();
-	}
-}
-
 void REPEAT(char c, int amt) {
 	for (int i = 0; i < amt; i++)
 		std::cout << c;
@@ -178,11 +92,31 @@ string nthWord(string that, int n) {
 
 }
 
-void DriverTest(Tree<qDriver> test, User& user) {
+Tree<qDriver> DriverTestInit() {
+		ifstream fptr("driver.txt");
+		if (!fptr) {
+			FileException oops;
+			oops.show();
+			return {};
+		}
+		Tree<qDriver> that;
+		string x;
+		qDriver temp;
+		do {
+			fptr >> temp;
+			that.push_question(temp);
+		} while (!fptr.eof());
+		fptr.close();
+		return that;
+	}
+
+void DriverTest(User& user){
 	Interface huh;
+	Tree<qDriver> test = DriverTestInit();
 	if (test.isEmpty()) {
 		FileException empty;
 		empty.show();
+		return;
 	}
 	int mistakes = 0;
 	int curr = 0;
@@ -247,35 +181,159 @@ void question_failed(Tree<qDriver>::Iterator it, User& user, int& mistakes_amt) 
 	return;
 }
 
-List<qSport> sportsTestInit(const char* fileName) {
-	ifstream fptr(fileName);
+
+template <class T>
+List<T> TestInit(const char* filename){
+	ifstream fptr(filename);
 	if (!fptr) {
 		FileException oops;
 		oops.show();
 		return {};
 	}
-	List<qSport> list;
+	List<T> list;
 	string x;
-	int goal = 0;
-	int record = 0;
-	getline(fptr, x);
 	do {
-		fptr >> goal;
-		fptr >> record;
-		if (!fptr.eof()) {
-			fptr.ignore(1);
-			getline(fptr, x);
-			if (x[0] != '\0') {
-				list.push(qSport(x, goal, record));
-			}
-		}
+		T temp;
+		fptr >> temp;
+		list.push(temp);
 	} while (!fptr.eof());
 	fptr.close();
 	return list;
 }
 
-void sportsTest(User& user) {
-	List<qSport> list = sportsTestInit();
+void mbtiTest(User& user){
+	List<qMbti> list = TestInit<qMbti>("mbtiQuestions.txt");
+	if (list.isEmpty()) {
+		FileException exc;
+		exc.show();
+		return;
+	}
+	Interface huh;
+	if (!huh.MBTItestMenu()) { return; }
+
+	int choice = 0;
+	int curr = 0;
+	bool flg = false;
+	Stack<int> answ;
+	for (List<qMbti>::Iterator it = list.begin(); it != list.end(); it++) {
+		if (flg) {
+			it--;
+		}
+		else {
+			curr++;
+		}
+		flg = false;
+		choice = 0;
+		huh.q_header(curr);
+		cout << (*it).value;
+		NEWLINE;
+		std::cout << "Your answer:  ";
+		std::cin >> choice;
+		if (choice < 0) {
+			return;
+		}
+		if (!choice) {
+			flg = true;    
+			if (curr > 1 || !(answ.isEmpty())) {
+				user.updMbti(answ.pop(), (*it).value);
+			}
+			curr--;
+			if (curr < 1) {
+				curr = 1;
+			}
+			if (it != list.begin()) {
+				it--;
+			}
+			
+		}
+		else {
+			choice -= 3;
+			answ.push((-1) * choice);
+			user.updMbti(choice, (*it).value);
+		}
+	}
+
+	system("CLS");
+	std::cout << "Your result is: " << user;
+	huh.eot();
+	bool wannasave = true;
+	std::cin >> wannasave;
+	if (wannasave) {
+		user.save();
+	}
+}
+void ShmishekTest(User& user) {
+	List<qShmishek> list = TestInit<qShmishek>("shmishek.txt");
+	if (list.isEmpty()) {
+		FileException exc;
+		exc.show();
+		return;
+	}
+	Interface huh;
+	if (!huh.MBTItestMenu()) { return; }
+
+	int choice = 0;
+	int curr = 0;
+	bool flg = false;
+	Stack<int> answ;
+
+	for (List<qShmishek>::Iterator it = list.begin(); it != list.end(); it++) {
+		if (flg) {
+			it--;
+		}
+		else {
+			curr++;
+		}
+		flg = false;
+		choice = 0;
+		huh.q_header(curr);
+		cout << (*it).value;
+		NEWLINE;
+		std::cout << "Your answer:  ";
+		std::cin >> choice;
+		if (choice < 0) {
+			return;
+		}
+		if (!choice) {
+			flg = true;
+			curr--;
+			if (it != list.begin()) {
+				it--;
+			}
+			if (curr < 1) {
+				curr = 1;
+			}
+			if (!(answ.isEmpty())) {
+			//	user.updShmishek(answ.pop(), (*it).value);
+			}
+		}
+		else {
+			if (user.getGender() == 'f') {
+				choice /= (*it).value.value_multiplier_female;
+			}
+			else {
+				choice /= (*it).value.value_multiplier_male;
+			}
+			answ.push((-1) * choice);
+			user.updShmishek((*it).value.getType(), choice);
+
+		}
+	}
+
+	system("CLS");
+	//std::cout << "Your result is: " << result << endl;
+	//std::cout << "The best is: " << best << endl;
+	huh.eot();
+	bool wannasave = true;
+	std::cin >> wannasave;
+	if (wannasave) {
+		//user.setSports(result);
+		user.save();
+	}
+}
+void SportsTest(User& user) {
+	//List<qSport> list = sportsTestInit();
+	List<qSport> list = TestInit<qSport>("sports.txt");
 	if (list.isEmpty()) {
 		FileException exc;
 		exc.show();
@@ -351,24 +409,3 @@ void sportsTest(User& user) {
 		user.save();
 	}
 }
-
-/*
-template <class T>
-List<T> testInit(const char* filename){
-	ifstream fptr(fileName);
-	if (!fptr) {
-		FileException oops;
-		oops.show();
-		return {};
-	}
-	List<T> list;
-	string x;
-	do {
-		T temp;
-		fptr >> temp;
-		list.push(temp);
-	} while (!fptr.eof());
-	fptr.close();
-	return list;
-}
-*/

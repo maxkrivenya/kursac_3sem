@@ -1,5 +1,6 @@
 #pragma once
 #include "kursac_functions.h"
+#include "InputException.h"
 
 #define addInfo "*Более подробное описание результатов можно найти в файле с названием теста и вашим id*"
 using namespace std;
@@ -8,6 +9,8 @@ class Interface {
 public:
 	Interface() {};
 	~Interface() {};
+	void Menu();
+	void MenuHeader();
 	bool MBTItestMenu();
 	bool DriverTestMenu();
 	void q_header(int curr);
@@ -23,5 +26,5 @@ public:
 	//void IntelligenceTestMenu();
 	//void AbilityTestMenu();		
 private:
-	User account;
+	User user;
 };

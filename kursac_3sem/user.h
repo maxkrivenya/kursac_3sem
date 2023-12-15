@@ -58,7 +58,7 @@ public:
 	void save();
 	void auth();
 	void updMbti(int type, qMbti q);
-	void updShmishek(int type, qShmishek q);
+	void updShmishek(int val, qShmishek q);
 
 	void setId(string newId);
 	void setName(string newName);

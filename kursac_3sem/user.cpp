@@ -55,6 +55,9 @@ void User::updMbti(int val, qMbti data){
 	}
 }
 
+void User::updShmishek(int val, qShmishek data) {
+	this->shmish[data.getType()] += val;
+}
 
 ostream& operator<<(ostream& o, const User& user) {
 	if (user.type.ei >= 0) {

@@ -1,5 +1,6 @@
 #include "Interface.h"
 #define MISTAKES_AMT 3
+
 bool Interface::MBTItestMenu() {
 	int choice = 0;
 	std::cout << std::endl << "Welcome to the MBTI Test."
@@ -36,35 +37,76 @@ bool Interface::DriverTestMenu() {
 	return 1;
 }
 
+void Interface::q_header(int curr) {
+	system("CLS");
+	SKIP(CONSOLE_WIDTH / 2 - 11);
+	REPEAT('-', 15);
+	NEWLINE;
+	SKIP(CONSOLE_WIDTH / 2);
+	std::cout << "| Question #" << curr << " |";
+	NEWLINE;
+	SKIP(CONSOLE_WIDTH / 2 - 11);
+	REPEAT('-', 15);
+	NEWLINE;
+}
 
-	void Interface::q_header(int curr) {
-		system("CLS");
-		SKIP(CONSOLE_WIDTH / 2 - 11);
-		REPEAT('-', 15);
-		NEWLINE;
-		SKIP(CONSOLE_WIDTH / 2);
-		std::cout << "| Question #" << curr << " |";
-		NEWLINE;
-		SKIP(CONSOLE_WIDTH / 2 - 11);
-		REPEAT('-', 15);
-		NEWLINE;
+void Interface::q_header(string text) {
+	system("CLS");
+	SKIP(CONSOLE_WIDTH / 2 - 11);
+	REPEAT('-', 15);
+	NEWLINE;
+	SKIP(CONSOLE_WIDTH / 2);
+	std::cout << "| " << text << " |";
+	NEWLINE;
+	SKIP(CONSOLE_WIDTH / 2 - 11);
+	REPEAT('-', 15);
+	NEWLINE;
+}
+
+void Interface::eot() {
+	NEWLINE;
+	std::cout << "If you don't want to save, type 0: ";
+}
+
+void Interface::MenuHeader() {
+	system("CLS");
+	cout << "Welcome to Max's Tests!" <<
+		endl << "To return, input a negative number" <<
+		endl << "Input choices:" <<
+		endl << "\t1: MBTI test" <<
+		endl << "\t2: Shmishek test" <<
+		endl << "\t3: Driver's test" <<
+		endl << "\t4: Sports test" <<
+		endl << "Your answer: ";
+	return;
+}
+
+void Interface::Menu(){
+	MenuHeader();
+	int choice = 0;
+	cin >> choice;
+	if (choice < 0) { return; }
+	switch (choice) {
+	case 1: {
+		mbtiTest(this->user);
+		break;
 	}
-
-	void Interface::q_header(string text) {
-		system("CLS");
-		SKIP(CONSOLE_WIDTH / 2 - 11);
-		REPEAT('-', 15);
-		NEWLINE;
-		SKIP(CONSOLE_WIDTH / 2);
-		std::cout << "| " << text << " |";
-		NEWLINE;
-		SKIP(CONSOLE_WIDTH / 2 - 11);
-		REPEAT('-', 15);
-		NEWLINE;
+	case 2: {
+		ShmishekTest(this->user);
+		break;
 	}
-
-
-	void Interface::eot() {
-		NEWLINE;
-		std::cout << "If you don't want to save, type 0: ";
+	case 3: {
+		DriverTest(this->user);
+		break;
 	}
+	case 4: {
+		SportsTest(this->user);
+		break;
+	}
+	default:
+		InputException exc("Please choose from 1-4.\nOr input a negative number to exit\n");
+		exc.show();
+	}
+	
+}
+

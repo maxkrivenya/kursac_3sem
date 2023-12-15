@@ -10,5 +10,6 @@ public:
 		this->value_multiplier_female = Female;
 	}
 	~qShmishek() {};
+	friend istream& operator>>(istream&, qShmishek&);
 };
 

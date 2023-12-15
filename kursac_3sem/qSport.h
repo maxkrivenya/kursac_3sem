@@ -13,4 +13,5 @@ public:
 	int getRecord();
 	void setRecord(int record);
 	friend ostream& operator<<(ostream& os, qSport& that);
+	friend istream& operator>>(istream& is, qSport& that);
 };

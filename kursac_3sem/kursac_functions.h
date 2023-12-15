@@ -12,12 +12,19 @@ string nthWord(string, int);
 void REPEAT(char c, int amt);
 void SKIP(int amt);
 
-List<qMbti> mbtiTestInit(const char* fileName = "mbtiQuestions.txt");
+template <class T>
+List<T> TestInit(const char* filename);
+
+
+
 void mbtiTest(User& user);
+void ShmishekTest(User& user);
+void SportsTest(User& user);
 
 
-void DriverTest(Tree<qDriver>, User& user);
+Tree<qDriver> DriverTestInit();
+void DriverTest(User& user);
 void question_failed(Tree<qDriver>::Iterator it, User& user, int& mistakes_amt);
 
-List<qSport> sportsTestInit(const char* fileName = "sports.txt");
-void sportsTest(User& user);
+
+

@@ -7,7 +7,7 @@ protected:
 	int type;
 	List<string> choices;
 public:
-	qDriver(string s, int answer, int type = 0) :qWithAnswer(s, answer) {
+	qDriver(string s = "", int answer = 0, int type = 0) :qWithAnswer(s, answer) {
 		this->type = type;
 	};
 	~qDriver() {};

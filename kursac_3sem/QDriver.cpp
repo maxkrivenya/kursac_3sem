@@ -1,7 +1,6 @@
 #include "QDriver.h"
 
 istream& operator>>(istream& is, qDriver& that) {
-	setlocale(LC_ALL, "RUSSIAN");
 	int temp = 0;
 	is >> temp;
 	if (temp == 0) {
@@ -12,7 +11,8 @@ istream& operator>>(istream& is, qDriver& that) {
 	temp %= 100;
 	temp %= 10;
 	cout << temp;
-	getline(is, that.data);
+	//getline(is, that.data);
+	is.ignore(1);
 	getline(is, that.data);
 	string x;
 	for (int i = 0; i < temp; i++) {
