@@ -1,0 +1,35 @@
+[33med1dc13[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m added template listtestinit, updated interface
+[33mb6bf09b[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m added sports test
+[33m95fba6d[m i dont even remember what i did
+[33m581bc11[m split questions, added new ones, reworked prev ones
+[33m42142a7[m check 14.12.23 21:51
+[33mb2c8b4b[m Spizdil
+[33mbb4447b[m no russian
+[33m892246e[m changed id position in users.txt
+[33m2daeb70[m std::string
+[33m2e3439b[m reverted. updated containers. save before change
+[33m5a751e0[m before implementing tree
+[33m3590977[m god help me
+[33m8fc1f79[m added stack, changed user.txt
+[33mfbd191c[m style adjustments
+[33m1ac54fb[m changes to mbti_test()
+[33m05c350f[m works for now
+[33mc6f18b3[m fuck help me
+[33m22f8f72[m fixed auth, save, need encode password
+[33m7e8fedb[m added user::save, user::auth doesnt work
+[33mca91340[m added q ?
+[33m53b8a96[m save before writing queueueue
+[33mfedba55[m god help me
+[33m4189b33[m idk tf im doing
+[33mc84574d[m begun stack
+[33m3a43157[m cleaned up code
+[33mc4f7ad0[m visual adjustments
+[33mc57263c[m turned Q into Test w q_mbti
+[33ma402dc9[m works for now
+[33m00595a3[m save before creating class Question
+[33me8b2283[m good evening
+[33m6513a3d[m trying to change .cd
+[33m8cc8f08[m mbti first attempt
+[33m49e8063[m Morning check
+[33mbb11090[m deleted unneccessary files
+[33m73bd0dd[m initial project

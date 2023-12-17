@@ -53,8 +53,6 @@ public:
 	}
 	~User() {;}
 	friend ostream& operator<<(ostream& os, const User& user);
-	template<class qMbti>
-	friend void mbtiTest(List<qMbti> list, User& user);
 	void save();
 	void auth();
 	void updMbti(int type, qMbti q);

@@ -2,7 +2,6 @@
 #include "qWithAnswer.h"
 
 class qDriver : public qWithAnswer {
-	friend class user;
 protected:
 	int type;
 	List<string> choices;

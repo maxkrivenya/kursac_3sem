@@ -1,4 +1,6 @@
-﻿  kursac_3sem.cpp
+﻿  Interface.cpp
+  QDriver.cpp
+  kursac_3sem.cpp
   kursac_functions.cpp
 D:\github\kursac_3sem\kursac_3sem\kursac_3sem\kursac_functions.cpp(312,26): warning C4244: '/=': conversion from 'float' to 'int', possible loss of data
 D:\github\kursac_3sem\kursac_3sem\kursac_3sem\kursac_functions.cpp(315,26): warning C4244: '/=': conversion from 'float' to 'int', possible loss of data
