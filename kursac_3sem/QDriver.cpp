@@ -10,8 +10,6 @@ istream& operator>>(istream& is, qDriver& that) {
 	that.answer = (temp % 100) / 10;
 	temp %= 100;
 	temp %= 10;
-	cout << temp;
-	//getline(is, that.data);
 	is.ignore(1);
 	getline(is, that.data);
 	string x;
@@ -23,7 +21,7 @@ istream& operator>>(istream& is, qDriver& that) {
 }
 
 ostream& operator<<(ostream& os, qDriver& that) {
-	os << endl << that.data << endl;
+	os << endl << that.data << " " << that.type << that.answer << endl;
 	for (List<string>::Iterator it = that.choices.begin(); it != that.choices.end(); it++) {
 		os << it->value << endl;
 	}

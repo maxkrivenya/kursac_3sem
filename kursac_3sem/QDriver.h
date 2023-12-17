@@ -8,6 +8,7 @@ protected:
 public:
 	qDriver(string s = "", int answer = 0, int type = 0) :qWithAnswer(s, answer) {
 		this->type = type;
+		this->choices = {};
 	};
 	~qDriver() {};
 	int getType();

@@ -10,6 +10,9 @@ int main() {
 	User max;
 	max.auth();
 	//mbtiTest(max);
-	SportsTest(max);
+	//SportsTest(max);
+	DriverTest(max);
+	//Tree<qDriver> test = DriverTestInit();
+	//test.log();
 	return 0;
 }

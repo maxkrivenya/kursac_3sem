@@ -101,8 +101,8 @@ Tree<qDriver> DriverTestInit() {
 		}
 		Tree<qDriver> that;
 		string x;
-		qDriver temp;
 		do {
+			qDriver temp;
 			fptr >> temp;
 			that.push_question(temp);
 		} while (!fptr.eof());

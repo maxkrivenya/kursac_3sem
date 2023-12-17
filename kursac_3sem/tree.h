@@ -240,11 +240,11 @@ void Tree<T>::log() {
 		Node* temp2 = temp1;
 
 		while (temp2 != NULL) {
-			std::cout << " " << temp2->value;
-			temp2 = temp2->next_right;
+			std::cout << temp2->value << std::endl;
+			temp2 = temp2->next_left;
 		}
 
-		temp1 = temp1->next_left;
+		temp1 = temp1->next_right;
 		std::cout << std::endl;
 	}
 }

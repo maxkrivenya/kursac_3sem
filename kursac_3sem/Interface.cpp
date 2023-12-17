@@ -52,14 +52,14 @@ void Interface::q_header(int curr) {
 
 void Interface::q_header(string text) {
 	system("CLS");
-	SKIP(CONSOLE_WIDTH / 2 - 11);
-	REPEAT('-', 15);
+	SKIP(CONSOLE_WIDTH / 2 - text.length());
+	REPEAT('-', text.length() + 4);
 	NEWLINE;
-	SKIP(CONSOLE_WIDTH / 2);
+	SKIP(CONSOLE_WIDTH / 2 - text.length() + 1);
 	std::cout << "| " << text << " |";
 	NEWLINE;
-	SKIP(CONSOLE_WIDTH / 2 - 11);
-	REPEAT('-', 15);
+	SKIP(CONSOLE_WIDTH / 2 - text.length());
+	REPEAT('-', text.length() + 4);
 	NEWLINE;
 }
 
