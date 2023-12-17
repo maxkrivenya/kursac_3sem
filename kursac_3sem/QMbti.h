@@ -6,8 +6,9 @@ class qMbti : public virtual Question {
 protected:
 	int type;
 public:
-	qMbti(int type = 1, string data = "Hello World!") :Question(data) {
+	qMbti(int type = 1, string data = ""):Question(data) {
 		this->type = type;
+		this->data = data;
 	}
 	~qMbti() {};
 	friend istream& operator>>(istream& is, qMbti& q);

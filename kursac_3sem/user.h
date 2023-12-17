@@ -11,52 +11,39 @@ using namespace std;
 
 class User {
 	friend class qDriver;
-	struct mbti {
-		int ei;
-		int sn;
-		int tf;
-		int	jp;
-	};
 private:
-	string pass;
-protected:
 	string id;
 	string name;
+	string pass;
+protected:
 	char gender;
-	string curr_mbti;
-	struct mbti type;
-	int shmish[shmish_size];
+	string mbti;
 	bool driver;
 	float sports;
 public:
-	User(string name = "Guest", string pass = " ", int id = 0, char gender = 'm') {
+	User(string name = "Guest", string pass = " ", string id = "0000", string mbti = "XXXX", char gender = 'm', int sports = 0) {
 		this->name = name;
 		this->pass = pass;
 		this->id = id;
 		this->gender = gender;
-		this->type.ei = 0;
-		this->type.sn = 0;
-		this->type.tf = 0;
-		this->type.jp = 0;
+		this->mbti = mbti;
 		this->driver = false;
+		this->sports = sports;
 	}
 	User(const User& that) {
 		this->name = that.name;
 		this->pass = that.pass;
 		this->id = that.id;
 		this->gender = that.gender;
+		this->mbti = that.mbti;
 		this->driver = that.driver;
-		this->type.ei = that.type.ei;
-		this->type.sn = that.type.sn;
-		this->type.tf = that.type.tf;
-		this->type.jp = that.type.jp;
+		this->sports = that.sports;
 	}
 	~User() {;}
 	friend ostream& operator<<(ostream& os, const User& user);
 	void save();
 	void auth();
-	void updMbti(int type, qMbti q);
-	void updShmishek(int val, qShmishek q);
+	void Register();
 
 	void setId(string newId);
 	void setName(string newName);

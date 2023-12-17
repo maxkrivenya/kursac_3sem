@@ -1,0 +1,9 @@
+
+1 0.8 1.2
+How many push-ups can you do?
+2 0.8 1.2
+How many pull-ups can you do?
+3 0.8 1.2
+How many sit-ups can you do in 60 seconds?
+4 0.8 1.2
+How far can you jump from-stand?

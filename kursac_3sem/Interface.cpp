@@ -37,7 +37,7 @@ bool Interface::DriverTestMenu() {
 	return 1;
 }
 
-void Interface::q_header(int curr) {
+void Interface::qHeader(int curr) {
 	system("CLS");
 	SKIP(CONSOLE_WIDTH / 2 - 11);
 	REPEAT('-', 15);
@@ -50,7 +50,7 @@ void Interface::q_header(int curr) {
 	NEWLINE;
 }
 
-void Interface::q_header(string text) {
+void Interface::qHeader(string text) {
 	system("CLS");
 	SKIP(CONSOLE_WIDTH / 2 - text.length());
 	REPEAT('-', text.length() + 4);
@@ -68,7 +68,28 @@ void Interface::eot() {
 	std::cout << "If you don't want to save, type 0: ";
 }
 
-void Interface::MenuHeader() {
+void Interface::MainMenuHeader() {
+	system("CLS");
+	cout << "Welcome to Max's Tests!" << endl
+		<< "If you're a new user, type 0" << endl
+		<< "If you already have an accout, type 1" << endl
+		<< "Your choice: ";
+}
+
+void Interface::MainMenu() {
+	MainMenuHeader();
+	int choice = 0;
+	cin >> choice;
+	if (choice) {
+		this->user.auth();
+	}
+	else {
+		this->user.Register();
+	}
+	this->TestMenu();
+}
+
+void Interface::TestMenuHeader() {
 	system("CLS");
 	cout << "Welcome to Max's Tests!" <<
 		endl << "To return, input a negative number" <<
@@ -78,12 +99,11 @@ void Interface::MenuHeader() {
 		endl << "\t3: Driver's test" <<
 		endl << "\t4: Sports test" <<
 		endl << "Your answer: ";
-	return;
 }
 
-void Interface::Menu(){
-	MenuHeader();
+void Interface::TestMenu(){
 	int choice = 0;
+	TestMenuHeader();
 	cin >> choice;
 	if (choice < 0) { return; }
 	switch (choice) {

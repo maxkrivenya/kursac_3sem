@@ -9,22 +9,15 @@ class Interface {
 public:
 	Interface() {};
 	~Interface() {};
-	void Menu();
-	void MenuHeader();
+	void MainMenu();
+	void MainMenuHeader();
+	void TestMenu();
+	void TestMenuHeader();
 	bool MBTItestMenu();
 	bool DriverTestMenu();
-	void q_header(int curr);
-	void q_header(string text);
-	void eot();
-	//void InterfaceMenu();
-	//void StartMenuUser();
-	//void StartMenuAdmin();
-	//void TestingMenu();		
-	//void AnalysisMenuAdmin();
-	//void AnalysisMenuUser();	
-	//void PersonalityTestMenu();
-	//void IntelligenceTestMenu();
-	//void AbilityTestMenu();		
+	void qHeader(int curr);
+	void qHeader(string text);
+	void eot();	
 private:
 	User user;
 };

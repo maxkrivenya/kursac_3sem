@@ -162,8 +162,9 @@
     <ClInclude Include="user.h" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="mbtiQuestions.txt" />
     <Text Include="driver.txt" />
+    <Text Include="mbti.txt" />
+    <Text Include="shmishek.txt" />
     <Text Include="sports.txt" />
     <Text Include="users.txt" />
     <Text Include="users2.txt" />

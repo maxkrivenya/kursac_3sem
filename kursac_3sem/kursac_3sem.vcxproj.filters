@@ -112,11 +112,12 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="mbtiQuestions.txt" />
     <Text Include="users.txt" />
     <Text Include="users2.txt" />
     <Text Include="driver.txt" />
     <Text Include="sports.txt" />
+    <Text Include="mbti.txt" />
+    <Text Include="shmishek.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="CD.CD" />

@@ -16,7 +16,7 @@ void User::setGender(char newGender) {
 	this->gender = newGender;
 }
 void User::setMbti(string newMbti) {
-	this->curr_mbti = newMbti;
+	this->mbti = newMbti;
 }
 void User::setDriver(bool newDriver) {
 	this->driver = newDriver;
@@ -35,7 +35,7 @@ char   User::getGender() {
 	return this->gender;
 }
 string User::getMbti() {
-	return this->curr_mbti;
+	return this->mbti;
 }
 bool   User::getDriver() {
 	return this->driver;
@@ -45,47 +45,18 @@ float  User::getSports() {
 }
 
 
-void User::updMbti(int val, qMbti data){
-	switch (data.type) {
-	case 1: {this->type.ei += val; break; }
-	case 2: {this->type.sn += val; break; }
-	case 3: {this->type.tf += val; break; }
-	case 4: {this->type.jp += val; break; }
-	default: {cout << endl << "Unexpected error" << endl; exit(1); break; }
-	}
-}
 
-void User::updShmishek(int val, qShmishek data) {
-	this->shmish[data.getType()] += val;
-}
 
-ostream& operator<<(ostream& o, const User& user) {
-	if (user.type.ei >= 0) {
-		o << 'E';
-	}
-	else {
-		o << 'I';
-	}
-	if (user.type.sn >= 0) {
-		o << 'S';
-	}
-	else {
-		o << 'N';
-	}
-	if (user.type.tf >= 0) {
-		o << 'T';
-	}
-	else {
-		o << 'F';
-	}
-	if (user.type.jp >= 0) {
-		o << 'J';
-	}
-	else {
-		o << 'P';
-	}
+ostream& operator<<(ostream& os, const User& user) {
+	os << user.id << " " << setw(10)
+		<< user.name << " " << setw(10)
+		<< user.pass << " " << setw(5)
+		<< user.gender << " " << setw(5)
+		<< user.mbti << " " << setw(5)
+		<< user.driver << " " << setw(5)
+		<< user.sports;
 
-	return o;
+	return os;
 }
 
 void User::save() {
@@ -109,9 +80,7 @@ void User::save() {
 		new_fptr << temp << endl;
 	} while (!(old_fptr.eof()));
 
-	new_fptr << this->id << " " << setw(10) << this->name << " " << setw(10) << this->pass << "   ";
-	if (this->type.ei != 0) { new_fptr << (*this); }
-	else { new_fptr << this->curr_mbti; }
+	new_fptr << *this;
 
 	while (!(old_fptr.eof())) {
 		getline(old_fptr, temp);
@@ -150,7 +119,7 @@ void User::auth() {
 			id			= nthWord(temp, 1);
 			login_s		= nthWord(temp, 2);
 			password_s	= nthWord(temp, 3);
-
+			
 			if (login == login_s || login == id) {
 				do {
 					if (attempts != 4) {
@@ -174,4 +143,48 @@ void User::auth() {
 		} while (!fptr.eof());
 		fptr.close();
 	}while (1);
+}
+
+void User::Register() {
+	ifstream fptr{ "users.txt" };
+	if (!fptr) {
+		std::cout << std::endl << "file open error in register" << std::endl;
+		exit(1);
+	}
+	int str_amt = 0;
+	string temp;
+	string pass;
+	for (; !fptr.eof(); str_amt++) {
+		getline(fptr, temp);
+	}
+	fptr.close();
+
+	this->id = to_string(1111 + str_amt);
+
+	fstream fptr2{ "users.txt", std::ios::app };
+	std::cout << std::endl << "Login: ";
+	cin.ignore(1);
+	getline(cin, this->name);
+	NEWLINE;
+	std::cout << "What's your gender? (m/f): ";
+	cin >> this->gender;
+	cin.ignore(1);
+	do {
+		NEWLINE;
+		std::cout << "Password: ";
+		getline(cin, this->pass);
+		NEWLINE;
+		std::cout << "Repeat password: ";
+		getline(cin, pass);
+
+		if (this->pass == "password") {
+			exit(1);
+		}
+		if (!(this->pass == pass)) {
+			NEWLINE;
+			std::cout << "Passwords don't match";
+			NEWLINE;
+		}
+	} while (!(this->pass == pass));
+	this->save();
 }

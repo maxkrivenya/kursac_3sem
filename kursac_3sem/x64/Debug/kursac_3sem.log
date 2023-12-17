@@ -1,7 +1,10 @@
-﻿  Interface.cpp
-D:\github\kursac_3sem\kursac_3sem\kursac_3sem\Interface.cpp(55,40): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-D:\github\kursac_3sem\kursac_3sem\kursac_3sem\Interface.cpp(56,31): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-D:\github\kursac_3sem\kursac_3sem\kursac_3sem\Interface.cpp(58,44): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-D:\github\kursac_3sem\kursac_3sem\kursac_3sem\Interface.cpp(61,40): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-D:\github\kursac_3sem\kursac_3sem\kursac_3sem\Interface.cpp(62,31): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+﻿  kursac_functions.cpp
+D:\github\kursac_3sem\kursac_3sem\kursac_3sem\user.h(31,18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\github\kursac_3sem\kursac_3sem\kursac_3sem\kursac_functions.cpp(265,26): warning C4244: '/=': conversion from 'float' to 'int', possible loss of data
+D:\github\kursac_3sem\kursac_3sem\kursac_3sem\kursac_functions.cpp(268,26): warning C4244: '/=': conversion from 'float' to 'int', possible loss of data
+D:\github\kursac_3sem\kursac_3sem\kursac_3sem\kursac_functions.cpp(333,26): warning C4244: '/=': conversion from 'float' to 'int', possible loss of data
+D:\github\kursac_3sem\kursac_3sem\kursac_3sem\kursac_functions.cpp(336,26): warning C4244: '/=': conversion from 'float' to 'int', possible loss of data
+  user.cpp
+D:\github\kursac_3sem\kursac_3sem\kursac_3sem\user.h(31,18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  Generating Code...
   kursac_3sem.vcxproj -> D:\github\kursac_3sem\kursac_3sem\kursac_3sem\x64\Debug\kursac_3sem.exe

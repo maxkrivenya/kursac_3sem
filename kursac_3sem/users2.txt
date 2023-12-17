@@ -1,5 +1,5 @@
-1111       Milk      Brest   ESTJ
-1112        Max   Krivenya   
-1113     Cheese    Cheddar   ESTJ
-1114    Aleksey        wth   ENFJ
-1115    Chicken     Grodno   INFJ
+1111       Milk      Brest     f  ESTJ     0     0
+1112        Max   Krivenya     m  ESTJ     0     0
+1113     Cheese    Cheddar     m  ESTJ     1     3
+1114    Aleksey        wth     f  ENFJ     7     5
+1115    Chicken     Grodno     f  INFJ     1     2

@@ -2,61 +2,10 @@
 #include "FileException.h"
 #include <fstream>
 #include <string>
+#include <vector>
 #define MISTAKES_AMT 3
 
-User& Register() {
-	ifstream fptr{ "users.txt" };
-	if (!fptr) {
-		std::cout << std::endl << "file open error in register" << std::endl;
-		exit(1);
-	}
-	int str_amt = 0;
-	string login;
-	string password;
-	string password2;
-	int id;
-	bool male;
-	string temp;
 
-	for (; !fptr.eof(); str_amt++) {
-		getline(fptr, temp);
-	}
-	id = 1111 + (str_amt / 2);
-	NEWLINE;
-	std::cout << "stramt = " << str_amt;
-	NEWLINE;
-	fptr.close();
-	fstream fptr2{ "users.txt", std::ios::app };
-	std::cout << std::endl << "Login: ";
-	cin >> login;
-	NEWLINE;
-	std::cout << "Are you male or female? (0/1): ";
-	cin >> male;
-	do {
-		NEWLINE;
-		std::cout << "Password: ";
-		cin >> password;
-		NEWLINE;
-		std::cout << "Repeat password: ";
-		cin >> password2;
-
-		if (!(password == password2)) {
-			NEWLINE;
-			std::cout <<"Passwords don't match";
-			NEWLINE;
-		}
-	} while (!(password == password2));
-
-	fptr2 << std::endl <<
-		login << " " <<
-		password << " " <<
-		id << std::endl <<
-		male << " " <<
-		0 << " " << 0 << " " << 0 << " " << 0;
-
-	User new_user{ login, password, id, male };
-	return new_user;
-}
 
 void REPEAT(char c, int amt) {
 	for (int i = 0; i < amt; i++)
@@ -125,7 +74,7 @@ void DriverTest(User& user){
 	for (Tree<qDriver>::Iterator it = test.begin(); it != test.end(); +it) {
 		curr++;
 		choice = 0;
-		huh.q_header(curr);
+		huh.qHeader(curr);
 		cout << (*it).value;
 		NEWLINE;
 		std::cout << "Your answer:  ";
@@ -164,7 +113,7 @@ void question_failed(Tree<qDriver>::Iterator it, User& user, int& mistakes_amt) 
 		cout << "type error!";
 		exit(1);
 	}
-	huh.q_header("Bonus round!");
+	huh.qHeader("Bonus round!");
 	cout << (*it).value;
 	NEWLINE;
 	std::cout << "Your answer:  ";
@@ -184,25 +133,27 @@ void question_failed(Tree<qDriver>::Iterator it, User& user, int& mistakes_amt) 
 
 template <class T>
 List<T> TestInit(const char* filename){
+	List<T> list;
+	int i = 0;
 	ifstream fptr(filename);
 	if (!fptr) {
 		FileException oops;
 		oops.show();
 		return {};
 	}
-	List<T> list;
-	string x;
-	do {
+	while (!fptr.eof()) {
+		i++;
 		T temp;
 		fptr >> temp;
 		list.push(temp);
-	} while (!fptr.eof());
+	}
 	fptr.close();
 	return list;
 }
 
 void mbtiTest(User& user){
-	List<qMbti> list = TestInit<qMbti>("mbtiQuestions.txt");
+	cout << "test started" << endl;
+	List<qMbti> list = TestInit<qMbti>("mbti.txt");
 	if (list.isEmpty()) {
 		FileException exc;
 		exc.show();
@@ -210,10 +161,10 @@ void mbtiTest(User& user){
 	}
 	Interface huh;
 	if (!huh.MBTItestMenu()) { return; }
-
 	int choice = 0;
 	int curr = 0;
 	bool flg = false;
+	vector<int> mbti(4, 0);
 	Stack<int> answ;
 	for (List<qMbti>::Iterator it = list.begin(); it != list.end(); it++) {
 		if (flg) {
@@ -224,7 +175,7 @@ void mbtiTest(User& user){
 		}
 		flg = false;
 		choice = 0;
-		huh.q_header(curr);
+		huh.qHeader(curr);
 		cout << (*it).value;
 		NEWLINE;
 		std::cout << "Your answer:  ";
@@ -235,7 +186,7 @@ void mbtiTest(User& user){
 		if (!choice) {
 			flg = true;    
 			if (curr > 1 || !(answ.isEmpty())) {
-				user.updMbti(answ.pop(), (*it).value);
+				mbti[(*it).value.getType()-1] += answ.pop();
 			}
 			curr--;
 			if (curr < 1) {
@@ -249,16 +200,18 @@ void mbtiTest(User& user){
 		else {
 			choice -= 3;
 			answ.push((-1) * choice);
-			user.updMbti(choice, (*it).value);
+			mbti[(*it).value.getType()-1] += choice;
 		}
 	}
 
 	system("CLS");
-	std::cout << "Your result is: " << user;
+	string result = VectToMbti(mbti);
+	std::cout << "Your result is: " << result;
 	huh.eot();
 	bool wannasave = true;
 	std::cin >> wannasave;
 	if (wannasave) {
+		user.setMbti(result);
 		user.save();
 	}
 }
@@ -276,7 +229,7 @@ void ShmishekTest(User& user) {
 	int curr = 0;
 	bool flg = false;
 	Stack<int> answ;
-
+	vector<int> shmishek(4, 0);
 	for (List<qShmishek>::Iterator it = list.begin(); it != list.end(); it++) {
 		if (flg) {
 			it--;
@@ -286,8 +239,8 @@ void ShmishekTest(User& user) {
 		}
 		flg = false;
 		choice = 0;
-		huh.q_header(curr);
-		cout << (*it).value;
+		huh.qHeader(curr);
+		std::cout << (*it).value;
 		NEWLINE;
 		std::cout << "Your answer:  ";
 		std::cin >> choice;
@@ -304,7 +257,7 @@ void ShmishekTest(User& user) {
 				curr = 1;
 			}
 			if (!(answ.isEmpty())) {
-			//	user.updShmishek(answ.pop(), (*it).value);
+				shmishek[(*it).value.getType() - 1] += answ.pop();
 			}
 		}
 		else {
@@ -315,20 +268,15 @@ void ShmishekTest(User& user) {
 				choice /= (*it).value.value_multiplier_male;
 			}
 			answ.push((-1) * choice);
-			user.updShmishek((*it).value.getType(), choice);
+			shmishek[(*it).value.getType() - 1] += choice;
 
 		}
 	}
 
 	system("CLS");
-	//std::cout << "Your result is: " << result << endl;
-	//std::cout << "The best is: " << best << endl;
-	huh.eot();
-	bool wannasave = true;
-	std::cin >> wannasave;
-	if (wannasave) {
-		//user.setSports(result);
-		user.save();
+	std::cout << "Your result is: ";
+	for (vector<int>::iterator it = shmishek.begin(); it != shmishek.end(); it++) {
+		std::cout << (*it) << " ";
 	}
 }
 void SportsTest(User& user) {
@@ -358,7 +306,7 @@ void SportsTest(User& user) {
 		}
 		flg = false;
 		choice = 0;
-		huh.q_header(curr);
+		huh.qHeader(curr);
 		cout << (*it).value;
 		NEWLINE;
 		std::cout << "Your answer:  ";
@@ -408,4 +356,34 @@ void SportsTest(User& user) {
 		user.setSports(result);
 		user.save();
 	}
+}
+
+string VectToMbti(vector<int> that) {
+	string result = "XXXX";
+	if (that[0] > 0) {
+		result[0] = 'E';
+	}
+	else {
+		result[0] = 'I';
+	}
+	if (that[1] > 0)
+	{
+		result[1] = 'S';
+	}
+	else {
+		result[1] = 'N';
+	}
+	if (that[2] > 0) {
+		result[2] = 'T';
+	}
+	else {
+		result[2] = 'F';
+	}
+	if (that[3] > 0) {
+		result[3] = 'J';
+	}
+	else {
+		result[3] = 'P';
+	}
+	return result;
 }

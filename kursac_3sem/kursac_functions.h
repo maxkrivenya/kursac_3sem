@@ -3,11 +3,11 @@
 #include "Containers.h"
 #include "qSport.h"
 #include <string>
+#include <vector>
 using namespace std;
 #define CONSOLE_WIDTH 120
 #define NEWLINE std::cout << std::endl;
 
-User& Register();
 string nthWord(string, int);
 void REPEAT(char c, int amt);
 void SKIP(int amt);
@@ -26,5 +26,5 @@ Tree<qDriver> DriverTestInit();
 void DriverTest(User& user);
 void question_failed(Tree<qDriver>::Iterator it, User& user, int& mistakes_amt);
 
-
+string VectToMbti(vector<int>);
 
